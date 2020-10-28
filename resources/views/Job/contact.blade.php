@@ -1,4 +1,4 @@
- @extends("Job\Header")
+ @extends("Job.Header")
 
 @section("content")
 
@@ -49,4 +49,4 @@
 
 
      @endsection   
-    @extends("Job\Footer") 
+    @extends("Job.Footer") 
