@@ -71,7 +71,7 @@
                     <div class="row">
                          <div class="col-md-12 col-sm-12">
                               <div class="section-title text-center">
-                                   <h2>Featured Jobs <small>Lorem ipsum dolor sit amet.</small></h2>
+                                   <h2>Featured Jobs <small>Contact us for more info.</small></h2>
                               </div>
                          </div>
 
@@ -89,7 +89,7 @@
                                    </div>
 
                                    <div class="courses-detail">
-                                        <h3><a href="job-details.html">Lorem ipsum dolor sit amet</a></h3>
+                                        <h3><a href="job-details.html">Startup</a></h3>
 
                                         <p class="lead"><strong>$60 000</strong></p>
 
@@ -116,9 +116,9 @@
                                    </div>
 
                                    <div class="courses-detail">
-                                        <h3><a href="job-details.html">Lorem ipsum dolor sit amet</a></h3>
+                                        <h3><a href="job-details.html">Startup</a></h3>
 
-                                        <p class="lead"><strong>$60 000</strong></p>
+                                        <p class="lead"><strong>$100 000</strong></p>
 
                                         <p>Medical / Health Jobs for <strong>BMI Kings Park Hospital</strong></p>
                                    </div>
@@ -143,9 +143,9 @@
                                    </div>
 
                                    <div class="courses-detail">
-                                        <h3><a href="job-details.html">Lorem ipsum dolor sit amet</a></h3>
+                                        <h3><a href="job-details.html">Startup</a></h3>
 
-                                        <p class="lead"><strong>$60 000</strong></p>
+                                        <p class="lead"><strong>$20 000</strong></p>
 
                                         <p>Medical / Health Jobs for <strong>BMI Kings Park Hospital</strong></p>
                                    </div>
@@ -165,7 +165,7 @@
                     <div class="row">
                          <div class="col-md-12 col-sm-12">
                               <div class="section-title text-center">
-                                   <h2>Latest Blog posts <small>Lorem ipsum dolor sit amet.</small></h2>
+                                   <h2>Latest Companies posts <small>Find yours.</small></h2>
                               </div>
                          </div>
 
@@ -176,14 +176,14 @@
                                              <img src="images/other-1-720x480.jpg" class="img-responsive" alt="">
                                         </div>
                                         <div class="courses-date">
-                                             <span title="Author"><i class="fa fa-user"></i> John Doe</span>
+                                             <span title="Author"><i class="fa fa-user"></i> Mandeville Recruitment Group South West London</span>
                                              <span title="Date"><i class="fa fa-calendar"></i> 12/06/2020 10:30</span>
                                              <span title="Views"><i class="fa fa-eye"></i> 114</span>
                                         </div>
                                    </div>
 
                                    <div class="courses-detail">
-                                        <h3><a href="blog-post-details.html">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a></h3>
+                                        <h3><a href="blog-post-details.html">Agile Dirctor.</a></h3>
                                    </div>
 
                                    <div class="courses-info">
@@ -199,14 +199,15 @@
                                              <img src="images/other-2-720x480.jpg" class="img-responsive" alt="">
                                         </div>
                                         <div class="courses-date">
-                                             <span title="Author"><i class="fa fa-user"></i> John Doe</span>
+                                             <span title="Author"><i class="fa fa-user"></i>MTN Group</span>
                                              <span title="Date"><i class="fa fa-calendar"></i> 12/06/2020 10:30</span>
                                              <span title="Views"><i class="fa fa-eye"></i> 114</span>
                                         </div>
                                    </div>
 
                                    <div class="courses-detail">
-                                        <h3><a href="blog-post-details.html">Tempora molestiae, iste, consequatur unde sint praesentium!</a></h3>
+                                        <h3><a href="blog-post-details.html">Human Resources Manager
+                                        !</a></h3>
                                    </div>
 
                                    <div class="courses-info">
@@ -222,14 +223,15 @@
                                              <img src="images/other-3-720x480.jpg" class="img-responsive" alt="">
                                         </div>
                                         <div class="courses-date">
-                                             <span title="Author"><i class="fa fa-user"></i> John Doe</span>
+                                             <span title="Author"><i class="fa fa-user"></i> Syriatel Company</span>
                                              <span title="Date"><i class="fa fa-calendar"></i> 12/06/2020 10:30</span>
                                              <span title="Views"><i class="fa fa-eye"></i> 114</span>
                                         </div>
                                    </div>
 
                                    <div class="courses-detail">
-                                        <h3><a href="blog-post-details.html">A voluptas ratione, error provident distinctio, eaque id officia?</a></h3>
+                                        <h3><a href="blog-post-details.html">Data Scienece Two Years of 
+                                        Experiance?</a></h3>
                                    </div>
 
                                    <div class="courses-info">
@@ -252,16 +254,18 @@
                               </div>
 
                               <div class="owl-carousel owl-theme owl-client">
-                                   <div class="col-md-4 col-sm-4">
+                                   <div class="col-md-6 col-sm-4">
                                         <div class="item">
                                              <div class="tst-image">
                                                   <img src="images/tst-image-1-200x216.jpg" class="img-responsive" alt="">
                                              </div>
                                              <div class="tst-author">
-                                                  <h4>Jackson</h4>
-                                                  <span>Shopify Developer</span>
+                                                  <h4>Nour Jabri</h4>
+                                                  <span>Back-end Web Developer</span>
                                              </div>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam voluptas, facilis adipisci dolorem exercitationem nemo aut error impedit repudiandae iusto.</p>
+                                             <p>Two Years of PHP Laravel Experiance want
+                                             to work as project manager .</p>
+                                           
                                              <div class="tst-rating">
                                                   <i class="fa fa-star"></i>
                                                   <i class="fa fa-star"></i>
@@ -272,16 +276,16 @@
                                         </div>
                                    </div>
 
-                                   <div class="col-md-4 col-sm-4">
+                                   <div class="col-md-6 col-sm-4">
                                         <div class="item">
                                              <div class="tst-image">
                                                   <img src="images/tst-image-2-200x216.jpg" class="img-responsive" alt="">
                                              </div>
                                              <div class="tst-author">
-                                                  <h4>Camila</h4>
+                                                  <h4>Camila Basem</h4>
                                                   <span>Marketing Manager</span>
                                              </div>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente error, unde eos laborum consequatur officiis perferendis vel debitis, dolore, ipsum quibusdam culpa quisquam, reiciendis aspernatur.</p>
+                                             <p>If you are experience in managing SKU’s, liaising with suppliers, a quick thinker who can multi task and plan ahead in order to avoid shipment delays, then look….</p>
                                              <div class="tst-rating">
                                                   <i class="fa fa-star"></i>
                                                   <i class="fa fa-star"></i>
@@ -290,16 +294,16 @@
                                         </div>
                                    </div>
 
-                                   <div class="col-md-4 col-sm-4">
+                                   <div class="col-md-6 col-sm-4">
                                         <div class="item">
                                              <div class="tst-image">
                                                   <img src="images/tst-image-3-200x216.jpg" class="img-responsive" alt="">
                                              </div>
                                              <div class="tst-author">
-                                                  <h4>Barbie</h4>
-                                                  <span>Art Director</span>
+                                                  <h4>Asma Nahhas</h4>
+                                                  <span>Agile Director</span>
                                              </div>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit laborum minima autem, reprehenderit mollitia amet id, beatae quo sequi culpa assumenda neque a quisquam, magni.</p>
+                                             <p>Want to bring our Agile MBA class to your company? The Job Hackers now has AgileMBA2U, a three day intensive version of our popular Agile MBA course.</p>
                                              <div class="tst-rating">
                                                   <i class="fa fa-star"></i>
                                                   <i class="fa fa-star"></i>
@@ -309,16 +313,16 @@
                                         </div>
                                    </div>
 
-                                   <div class="col-md-4 col-sm-4">
+                                   <div class="col-md-6 col-sm-4">
                                         <div class="item">
                                              <div class="tst-image">
                                                   <img src="images/tst-image-4-200x216.jpg" class="img-responsive" alt="">
                                              </div>
                                              <div class="tst-author">
-                                                  <h4>Andrio</h4>
+                                                  <h4>Andrio Wehbi</h4>
                                                   <span>Web Developer</span>
                                              </div>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore natus culpa laudantium sit dolores quidem at nulla, iure atque laborum! Odit tempora, enim aliquid at modi illum ducimus explicabo soluta.</p>
+                                             <p>have experience as an allocator looking to move up to an MAA, or experienced within an data drive admin role within retail looking for a new and….</p>
                                              <div class="tst-rating">
                                                   <i class="fa fa-star"></i>
                                                   <i class="fa fa-star"></i>
