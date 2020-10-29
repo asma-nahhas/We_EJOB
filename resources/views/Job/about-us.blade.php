@@ -9,7 +9,7 @@
 
                     <br>
 
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, alias.</p>
+                  
                </div>
           </div>
      </section>
@@ -23,13 +23,26 @@
 
                     <div class="col-md-7 col-xs-12">
                          <div class="about-info">
-                              <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, eos. Corporis, dolor?</h2>
+                              <h2>How E-WeJob Works
+                                   The E-WeJob Team
+                                   Careers at E-WeJob
+                                   
+                                   Press & Awards
+                                   Contact Us
+                                   FAQ
+                                   Gift Certificates</h2>
 
                               <figure>
                                    <figcaption>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, deserunt beatae praesentium veniam. Aperiam assumenda quas qui officiis, minima laudantium?</p>
+                                    
 
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis saepe quos repellat eum tempore magnam molestiae. Minus atque, aliquid assumenda, vero non recusandae illum optio, sint dignissimos praesentium ducimus repudiandae eius, nulla. Pariatur magnam alias est voluptatibus distinctio voluptate culpa, iste quisquam! Iure itaque rerum sequi, tenetur voluptatibus nihil quaerat, quisquam non in autem ducimus tempore impedit. Odit, corporis, praesentium.</p>
+                                        <p>Find Remote Work From Home & Flexible Jobs
+                                             Job Categories for Remote, Part-Time, Freelance, and Flexible Jobs
+                                             New Remote Work From Home and Flexible Jobs
+                                             Find Remote Work From Home and Flexible Jobs By Location
+                                             Top Searched Remote Work from Home Jobs
+                                             View Popular Job Searches
+                                             Job Seeker Success Stories!</p>
                                    </figcaption>
                               </figure>
                          </div>
@@ -47,13 +60,13 @@
 
                     <div class="col-md-offset-1 col-md-7 col-xs-12">
                          <div class="about-info">
-                              <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, minima!</h2>
+                              <h2>Benefits of using E-WeJob Mobile App</h2>
 
                               <figure>
                                    <figcaption>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, deserunt beatae praesentium veniam. Aperiam assumenda quas qui officiis, minima laudantium?</p>
+                                      
 
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis saepe quos repellat eum tempore magnam molestiae. Minus atque, aliquid assumenda, vero non recusandae illum optio, sint dignissimos praesentium ducimus repudiandae eius, nulla. Pariatur magnam alias est voluptatibus distinctio voluptate culpa, iste quisquam! Iure itaque rerum sequi, tenetur voluptatibus nihil quaerat, quisquam non in autem ducimus tempore impedit. Odit, corporis, praesentium.</p>
+                                        <p>There are so many! Starting with only the highest quality remote, work from home, and flexible jobs in 50+ career categories, our goal is to provide you with a top-notch job search experience from start to finish… and even beyond!</p>
                                    </figcaption>
                               </figure>
                          </div>
@@ -67,11 +80,16 @@
                <div class="row">
                     <div class="col-md-12 col-sm-12">
                          <div class="text-center">
-                              <h2>Lorem ipsum dolor sit amet</h2>
+                              <h2>Job Search Resources</h2>
 
                               <br>
 
-                              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore molestias ipsa veritatis nihil iusto maiores natus dolor, a reiciendis corporis obcaecati ex. Totam assumenda impedit aut eum, illum distinctio saepe explicabo. Consequuntur molestiae similique id quos, quasi quas perferendis laboriosam, fugit natus odit totam! Id dolores saepe, sint debitis rerum dolorem tempora aliquid, pariatur enim nisi. Quia ab iusto assumenda.</p>
+                              <p class="lead">Research Top Flexible Companies
+                              Job Search Advice, News, & More
+                              See Flexible Job Trends
+                              Browse Companies by Name
+                              National Flex Day
+                              Work Flexibility for Military Families.</p>
                          </div>
                     </div>
                </div>

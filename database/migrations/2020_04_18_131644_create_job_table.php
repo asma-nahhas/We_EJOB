@@ -14,13 +14,13 @@ class CreateJobTable extends Migration
     public function up()
     {
         Schema::create('job', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('company_id')->unsigned();
+            $table->id();
+            $table->integer('company_id');
             $table->foreign('company_id')->references('id')->on('company');
             $table->string('title');
-            $table->longText('salary');
+            $table->string('salary');
             $table->string('requiredEducationLevel');
-            $table->bigInteger('requiredExperienceYears');
+            $table->integer('requiredExperienceYears');
             $table->timestamps();
         });
     }

@@ -53,3 +53,17 @@ Route::get('/testiMonials', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/job-details', 'JobController@index');
+
+
+Route::get('/suitableJobs', 'JobController@getSuitable');
+
+
+Route::get('/Job', 'JobController@getSuitable');
+
+Route::resource('/Job', 'JobController');
+Route::resource('/Company', 'CompanyController');
+Route::resource('/Candidate', 'CandidateController');
+Route::resource('/Diploma', 'DiploamaController');

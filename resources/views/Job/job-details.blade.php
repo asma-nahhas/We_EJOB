@@ -2,7 +2,14 @@
 
 @section("content")
 
+
+
      <section>
+         
+
+
+
+ 
           <div class="container">
                <div class="row">
                     <div class="col-lg-3 col-md-3 col-xs-12">
@@ -14,16 +21,17 @@
                               <br>
                          </div>
                     </div>
-
+                      @foreach(\App\Job::all() as $element)
                     <div class="col-lg-9 col-md-9 col-xs-12">
                          <form action="#" method="post" class="form">
-                              <h2>Security Officer - Luxury Retail</h2>
 
-                              <p class="lead"><strong class="text-primary">$38000</strong> <small> per year</small></p>
+                              <h2> {{$element->title}}</h2>
+
+                              <p class="lead"><strong class="text-primary">SYP-{{$element->salary}}</strong> <small> per month</small></p>
 
                               <p class="lead">
                                    <i class="fa fa-briefcase"></i> Security / Protective Services Jobs &nbsp;&nbsp;
-                                   <i class="fa fa-map-marker"></i> London &nbsp;&nbsp;
+                                   <i class="fa fa-map-marker"></i> Damascus &nbsp;&nbsp;
                                    <i class="fa fa-calendar"></i> 20-06-2020 &nbsp;&nbsp;
                                    <i class="fa fa-file"></i> Contract
                               </p>
@@ -31,6 +39,7 @@
                               
                          </form>
                     </div>
+                @endforeach
                </div>
 
                <div class="panel panel-default">

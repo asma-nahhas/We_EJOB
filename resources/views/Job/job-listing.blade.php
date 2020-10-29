@@ -5,11 +5,11 @@
      <section>
           <div class="container">
                <div class="text-center">
-                    <h1>Car Listing</h1>
+                    <h1>Job Listing</h1>
 
                     <br>
 
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, alias.</p>
+                    <p class="lead">Find Your Job.</p>
                </div>
           </div>
      </section>
