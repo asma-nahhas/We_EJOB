@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticleTable extends Migration
+class CreateJobTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateArticleTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('job', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('company_id')->unsigned();
+            $table->foreign('company_id')->references('id')->on('company');
             $table->string('title');
-            $table->longText('body');
-            $table->string('image');
-            $table->bigInteger('views_count');
+            $table->longText('salary');
+            $table->string('requiredEducationLevel');
+            $table->bigInteger('requiredExperienceYears');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateArticleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('job');
     }
 }

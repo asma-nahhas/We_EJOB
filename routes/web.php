@@ -49,3 +49,7 @@ Route::get('/testiMonials', function () {
     return view('/Job/testimonials');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

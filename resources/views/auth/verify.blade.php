@@ -1,6 +1,12 @@
-@extends('layouts.app')
+ @extends("Job.Header")
 
 @section('content')
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -25,4 +31,11 @@
         </div>
     </div>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 @endsection
+   @extends("Job.Footer") 
