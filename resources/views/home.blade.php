@@ -93,13 +93,19 @@
           </li>
             @if (Auth::user()->name=="admin")
           <li>
-            <a href="{{url('Article')}}"><span class="fas fa-tag mr-3"></span>Manage Jobs</a>
+            <a href="{{url('manageJobs')}}"><span class="fas fa-tag mr-3"></span>Manage Jobs</a>
           </li>
           <li>
-            <a href="{{url('Appointment')}}"><span class="fas fa-address-card  mr-3"></span> Candidates</a>
+            <a href="{{url('manageCandidates')}}"><span class="fas fa-address-card  mr-3"></span> Candidates</a>
+          </li>
+         <li>
+            <a href="{{url('manageCompanies')}}"><span class="fas fa-building  mr-3"></span> Manage Companies</a>
           </li>
           @endif
          @if (Auth::user()->name!="admin")
+         <li>
+            <a href="{{url('myProfile')}}"><span class="fas fa-address-book  mr-3"></span>My Profile </a>
+          </li>
            <li>
             <a href="{{url('suitableJobs')}}"><span class="fas fa-address-card  mr-3"></span>My Suitable Jobs</a>
           </li>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Log;
 use App\Job;
 use App\Company;
 
@@ -14,12 +14,32 @@ class JobController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+     
+        $filter=$request->input('filter');
 
-       $data = Job::orderBy('requiredExperienceYears','desc')->paginate(8);
-        return view('Job.job-details', compact('data'));
+         Log::info($filter);
+        if($filter==null){
+
+              $filter='requiredExperienceYears';
+        }
+        Log::info($filter);
+     //  $data = Job::orderBy('requiredExperienceYears','desc')->paginate(8);
+
+        $data=Job::join('company','job.company_id','company.id')
+         ->select(
+                  'job.id',
+                  'job.title',
+                  'job.requiredExperienceYears',
+                  'job.salary',
+                  'job.requiredEducationLevel',
+                  'job.company_id',
+                  'company.cName as company_name'
+          )->orderBy($filter,'desc')->get();
+
+        return view('Job.all_jobs', compact('data'));
     }
 
     /**
@@ -62,7 +82,11 @@ class JobController extends Controller
     {
             $this->validate($request,[
             'Title'=>'required',
-            'Salary'=>'required'
+            'Salary'=>'required',
+            'Level'=>'required',
+            'Years'=>'required',
+            'Company'=>'required'
+
 
         ]);
 
@@ -81,7 +105,7 @@ class JobController extends Controller
 
 
 
-        return redirect('suitableJobs')->with('success','Data Saved');
+        return redirect('manageJobs')->with('success','Data Saved');
     }
 
     /**
