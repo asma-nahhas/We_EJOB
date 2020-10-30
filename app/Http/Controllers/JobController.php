@@ -49,15 +49,17 @@ class JobController extends Controller
     **/
 
     public function getSuitable(){
+        $experianceYears=0;
 
         $id = Auth::id(); 
 
         Log::info("id is");
         Log::info($id);
-
+        if(Candidate::find($id)){
         $experianceYears=Candidate::where('id', $id)->first()->experienceYears;
-
+       }
         Log::info($experianceYears);
+
         if($experianceYears==null){
             $experianceYears=0;
         }
