@@ -31,6 +31,23 @@
                             </div>
                         </div>
 
+                 <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Type</label>
+
+                            <div class="col-md-6">
+                                <Select id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" autofocus>
+                                    <option value="Company">Company</option>
+                                    <option value="Candidate">Candidate</option>
+                                </Select>
+
+                                @error('type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
