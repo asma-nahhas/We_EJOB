@@ -80,3 +80,6 @@ Route::get('/manageCompanies', 'CompanyController@index');
 
 
 Route::get('/myProfile', 'CandidateController@create');
+
+
+Route::get('/manageDiploma', 'DiploamaController@index');

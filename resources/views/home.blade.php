@@ -100,12 +100,17 @@
           </li>
          <li>
             <a href="{{url('manageCompanies')}}"><span class="fas fa-building  mr-3"></span> Manage Companies</a>
-          </li>
+         </li>
           @endif
          @if (Auth::user()->name!="admin")
          <li>
             <a href="{{url('myProfile')}}"><span class="fas fa-address-book  mr-3"></span>My Profile </a>
-          </li>
+         </li>
+
+        <li>
+            <a href="{{url('manageDiploma')}}"><span class="fas fa-building  mr-3"></span> Add Diploma</a>
+        </li>
+
            <li>
             <a href="{{url('suitableJobs')}}"><span class="fas fa-address-card  mr-3"></span>My Suitable Jobs</a>
           </li>

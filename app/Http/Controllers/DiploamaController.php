@@ -17,6 +17,8 @@ class DiploamaController extends Controller
     public function index()
     {
         //
+          $data = Diploma::orderBy('diplomaTitle','desc')->paginate(8);
+          return view('Job.add_diploma', compact('data'));
     }
 
     /**
@@ -38,6 +40,29 @@ class DiploamaController extends Controller
     public function store(Request $request)
     {
         //
+
+            $this->validate($request,[
+            'candidate_id'=>'required',
+            'diplomaTitle'=>'required'
+
+
+        ]);
+
+       
+
+
+        $Diploma=new Diploma;
+        $Diploma->candidate_id=$request->input('candidate_id');
+        $Diploma->diplomaTitle=$request->input('diplomaTitle');
+
+
+    
+
+        $Diploma->save();
+
+
+
+        return redirect('manageDiploma')->with('success','Data Saved');
     }
 
     /**
@@ -72,6 +97,24 @@ class DiploamaController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+
+          $this->validate($request,[
+            'editDiplomaTitle'=>'required'
+
+        ]);
+
+        $Diploma=Diploma::findOrFail($request->input('editId'));
+
+
+        $form_data = array(
+            'diplomaTitle'       =>   $request->input('editDiplomaTitle')
+
+        );
+        
+        Diploma::whereId($request->input('editId'))->update($form_data);
+
+        return redirect('manageDiploma')->with('success', 'Data is successfully updated'); 
     }
 
     /**
@@ -83,5 +126,10 @@ class DiploamaController extends Controller
     public function destroy($id)
     {
         //
+
+    $data = Diploma::findOrFail($id);
+        $data->delete();
+
+        return redirect('manageDiploma')->with('success', 'Data is successfully deleted');
     }
 }
