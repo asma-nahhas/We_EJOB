@@ -16,6 +16,9 @@ class CandidateController extends Controller
     public function index()
     {
         //
+
+         $data = Candidate::orderBy('name','desc')->paginate(8);
+          return view('Job.all_candidates', compact('data'));
     }
 
     /**
@@ -37,6 +40,32 @@ class CandidateController extends Controller
     public function store(Request $request)
     {
         //
+
+         $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+            'experienceYears'=>'required',
+            'password'=>'required'
+
+
+        ]);
+
+       
+
+
+        $candidate=new Candidate;
+        $candidate->name=$request->input('name');
+        $candidate->email=$request->input('email');
+        $candidate->experienceYears=$request->input('experienceYears');
+        $candidate->password=$request->input('password');
+
+    
+
+        $candidate->save();
+
+
+
+        return redirect('manageCandidates')->with('success','Data Saved');
     }
 
     /**
@@ -71,6 +100,27 @@ class CandidateController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+     $this->validate($request,[
+            'editName'=>'required',
+            'editEmail'=>'required',
+            'editExperianceYears'=>'required'
+
+        ]);
+
+        $company=Candidate::findOrFail($request->input('editId'));
+
+
+        $form_data = array(
+            'name'             =>   $request->input('editName'),
+            'email'            =>   $request->input('editEmail'),
+            'experienceYears'  =>   $request->input('editExperianceYears')
+
+        );
+        
+        Candidate::whereId($request->input('editId'))->update($form_data);
+
+        return redirect('manageCandidates')->with('success', 'Data is successfully updated'); 
     }
 
     /**
@@ -82,5 +132,10 @@ class CandidateController extends Controller
     public function destroy($id)
     {
         //
+
+     $data = Candidate::findOrFail($id);
+        $data->delete();
+
+        return redirect('manageCandidates')->with('success', 'Data is successfully deleted');
     }
 }

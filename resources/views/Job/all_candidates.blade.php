@@ -39,7 +39,7 @@
       <div id="content" width="100" >
       	<br/>
      
-       <h2> <center>Manage Companies </center></h2>
+       <h2> <center>Manage Candidates </center></h2>
 
         <br/>
     
@@ -48,7 +48,7 @@
 <div style="margin-left:100px;">
 <a href="{{ url('/home') }}" class="btn btn-info">Back Home</a>
 <button   type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-Add Company
+Add Candidate
 </button>
 
 
@@ -57,12 +57,12 @@ Add Company
 <br/>
 <br/>
 
-            <table align="center" class="table" id="CompanyTable" style="width:900px;  border-collapse: collapse;">
+            <table align="center" class="table" id="CandidateTable" style="width:900px;  border-collapse: collapse;">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Telephone</th>
+                        <th>Experiance Years</th>
                         <th>Update</th>
                         <th>Delete</th>
                   
@@ -72,9 +72,9 @@ Add Company
 
                   @foreach($data as $element)
                   <tr>
-		                  <td>{{$element->cName}}</td>
+		                  <td>{{$element->name}}</td>
 		                  <td>{{$element->email}}</td>
-		                  <td>{{$element->tel}}</td>
+		                  <td>{{$element->experienceYears}}</td>
 
              
              
@@ -82,7 +82,7 @@ Add Company
                   <td><button class="btn btn-success" data-toggle="modal" data-target="#editModalCenter"  onclick="updatefunc({{$element}})"><i class="fa fa-edit"></i></button></td> 
                   <td>
                   
-                  <form action="{{url('Company',$element->id)}}" method="post">
+                  <form action="{{url('Candidate',$element->id)}}" method="post">
                     {{ method_field('DELETE') }}
                       {{ csrf_field() }}
                     <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
@@ -106,35 +106,35 @@ Add Company
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Company</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Candidate</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <!--Start Form Modal-->
-  <form  action="{{  action('CompanyController@store') }}"  method="POST" enctype="multipart/form-data">
+  <form  action="{{  action('CandidateController@store') }}"  method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
 
           <div class="form-group">
-            <label for="Name">Company Name</label>
-            <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Enter Company Name">
+            <label for="Name">Candidate Name</label>
+            <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Enter Candidate Name">
            
           </div>
 
           <div class="form-group">
             <label for="Name">Email</label>
-            <input type="text" class="form-control" name="email" aria-describedby="email" placeholder="Enter Company Email">
+            <input type="text" class="form-control" name="email" aria-describedby="email" placeholder="Enter Candidate Email">
            
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Company Telephone</label>
-            <input  class="form-control" name="tel" placeholder="Enter Company Telephone"> </input> 
+            <label for="exampleInputPassword1">Candidate Experiance Years</label>
+            <input  class="form-control" name="experienceYears" placeholder="Enter Candidate Experiance Years"> </input> 
           </div>
 
           <div class="form-group">
-            <label for="exampleInputPassword1">Company Password</label>
-            <input  type="password" class="form-control" name="password" placeholder="Enter Company Password"> </input> 
+            <label for="exampleInputPassword1">Candidate Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Enter Candidate Password"> </input> 
           </div>
 
               </div>
@@ -158,7 +158,7 @@ Add Company
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editModalCenterTitle">Edit Company</h5>
+        <h5 class="modal-title" id="editModalCenterTitle">Edit Candidate</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -171,18 +171,18 @@ Add Company
       <input type="hidden" class="form-control" name="editId" id="editId" >
 
           <div class="form-group">
-            <label for="Name">Name</label>
-            <input type="text" class="form-control" name="editName" id="editName" aria-describedby="Name" placeholder="Enter Company Name">
+            <label for="Name">Candidate Name</label>
+            <input type="text" class="form-control" name="editName" id="editName" aria-describedby="Name" placeholder="Enter Candidate Name">
            
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Company Email</label>
-            <input  class="form-control" name="editEmail" id="editEmail" placeholder="Enter Company Email">
+            <label for="exampleInputPassword1">Candidate Email</label>
+            <input  class="form-control" name="editEmail" id="editEmail" placeholder="Enter Candidate Email">
           </div>
 
           <div class="form-group">
-            <label for="exampleInputPassword1">Company Telephone</label>
-            <input  class="form-control" name="editTele" id="editTele" placeholder="Enter Company Telephone">
+            <label for="exampleInputPassword1">Candidate Experiance Years</label>
+            <input  class="form-control" name="editExperianceYears" id="editExperianceYears" placeholder="Enter Candidate Experiance Years">
           </div>
 
 
@@ -236,12 +236,12 @@ Add Company
 
 
         $("#editId").val($element["id"]);
-        $("#editName").val($element["cName"]);
+        $("#editName").val($element["name"]);
         $("#editEmail").val($element["email"]);
-        $("#editTele").val($element["tel"]);
+        $("#editExperianceYears").val($element["experienceYears"]);
     
 
-       $("#editForm").attr('action', '{{url("Company",'+$element["id"]+')}}');
+       $("#editForm").attr('action', '{{url("Candidate",'+$element["id"]+')}}');
 
         
        
@@ -252,7 +252,7 @@ Add Company
      function deletefunc($id){
       
 
-              $("#deleteModalCenter").attr('action', '{{  url("Company.destroy",'+$id+') }}');
+              $("#deleteModalCenter").attr('action', '{{  url("Candidate.destroy",'+$id+') }}');
 
        
 
