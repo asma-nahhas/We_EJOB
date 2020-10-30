@@ -102,7 +102,16 @@
             <a href="{{url('manageCompanies')}}"><span class="fas fa-building  mr-3"></span> Manage Companies</a>
          </li>
           @endif
-         @if (Auth::user()->name!="admin")
+         @if (Auth::user()->type=="Company")
+          <li>
+            <a href="{{url('manageJobs')}}"><span class="fas fa-tag mr-3"></span>Manage Jobs</a>
+          </li>
+          <li>
+            <a href="{{url('manageCandidates')}}"><span class="fas fa-address-card  mr-3"></span> Candidates</a>
+          </li>
+          @endif
+
+         @if (Auth::user()->name!="admin" && Auth::user()->type!="Company" )
          <li>
             <a href="{{url('myProfile')}}"><span class="fas fa-address-book  mr-3"></span>My Profile </a>
          </li>
@@ -110,11 +119,12 @@
         <li>
             <a href="{{url('manageDiploma')}}"><span class="fas fa-building  mr-3"></span> Add Diploma</a>
         </li>
+         @if ($hasCandidate==1)
 
            <li>
             <a href="{{url('suitableJobs')}}"><span class="fas fa-address-card  mr-3"></span>My Suitable Jobs</a>
           </li>
-        
+        @endif
           <li>
             <a href="{{url('about')}}"><span class="fa fa-info-circle mr-3"></span> About</a>
           </li>
@@ -154,27 +164,7 @@
 
 
 
-
-
-
-
-
 @yield("content")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

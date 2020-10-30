@@ -83,3 +83,5 @@ Route::get('/myProfile', 'CandidateController@create');
 
 
 Route::get('/manageDiploma', 'DiploamaController@index');
+
+Route::post('/store2', 'CandidateController@store2');

@@ -139,7 +139,14 @@ Add Job
 
           <div class="form-group">
             <label for="Name">Company</label>
-            <input type="text" class="form-control" name="Company" aria-describedby="Company" placeholder="Enter Job Company">
+
+            <select type="text" class="form-control" name="Company" aria-describedby="Company" placeholder="Enter Job Company">
+                 @foreach($companies as $element)
+                 <option value="{{$element->id}}" >{{$element->cName}}</option>
+
+                 @endforeach
+
+            </select>
            
           </div>
 

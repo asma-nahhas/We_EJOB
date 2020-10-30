@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Candidate;
-
+use App\User;
+use Auth;
 class CandidateController extends Controller
 {
     /**
@@ -29,6 +30,10 @@ class CandidateController extends Controller
     public function create()
     {
         //
+        $id = Auth::id(); 
+        $data = User::where('id','=',$id)->first();
+
+          return view('Job.Create_Profile', compact('data'));
     }
 
     /**
@@ -66,6 +71,53 @@ class CandidateController extends Controller
 
 
         return redirect('manageCandidates')->with('success','Data Saved');
+    }
+
+    public function store2(Request $request)
+    {
+        //
+
+         $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+            'experienceYears'=>'required',
+            'password'=>'required'
+
+
+        ]);
+
+
+
+        $id = Auth::id(); 
+        $data = Candidate::where('id','=',$id)->first();
+        if($data==null){
+
+
+        $candidate=new Candidate;
+        $candidate->id=$id;
+        $candidate->name=$request->input('name');
+        $candidate->email=$request->input('email');
+        $candidate->experienceYears=$request->input('experienceYears');
+        $candidate->password=$request->input('password');
+
+    
+
+        $candidate->save();
+
+    }else{
+
+         $form_data = array(
+            'name'             =>   $request->input('name'),
+            'email'            =>   $request->input('email'),
+            'experienceYears'  =>   $request->input('experienceYears')
+
+        );
+        
+        Candidate::whereId($id)->update($form_data);
+
+    }
+
+        return redirect('myProfile')->with('success','Data Saved');
     }
 
     /**

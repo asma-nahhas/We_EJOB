@@ -28,7 +28,16 @@ class JobController extends Controller
               $filter='requiredExperienceYears';
         }
         Log::info($filter);
-     //  $data = Job::orderBy('requiredExperienceYears','desc')->paginate(8);
+
+        //now we should check the current company name
+         $companyName = Auth::user()->name; 
+         Log::info("CompanyName");
+         Log::info($companyName);
+
+ 
+    if($companyName=='admin'){
+
+       
 
         $data=Job::join('company','job.company_id','company.id')
          ->select(
@@ -41,7 +50,27 @@ class JobController extends Controller
                   'company.cName as company_name'
           )->orderBy($filter,'desc')->get();
 
-        return view('Job.all_jobs', compact('data'));
+     }else{
+
+
+
+    $data=Job::join('company','job.company_id','company.id')
+         ->select(
+                  'job.id',
+                  'job.title',
+                  'job.requiredExperienceYears',
+                  'job.salary',
+                  'job.requiredEducationLevel',
+                  'job.company_id',
+                  'company.cName as company_name'
+          )->where('company.cName','=',$companyName)->orderBy($filter,'desc')->get();
+
+
+     }
+
+       $companies=Company::All();
+
+        return view('Job.all_jobs', compact(['data','companies']));
     }
 
     /**
