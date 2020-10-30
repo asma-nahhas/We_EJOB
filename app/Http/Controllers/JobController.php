@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Log;
+use Auth;
 use App\Job;
 use App\Company;
+use App\Candidate;
 
 class JobController extends Controller
 {
@@ -48,6 +50,18 @@ class JobController extends Controller
 
     public function getSuitable(){
 
+        $id = Auth::id(); 
+
+        Log::info("id is");
+        Log::info($id);
+
+        $experianceYears=Candidate::where('id', $id)->first()->experienceYears;
+
+        Log::info($experianceYears);
+        if($experianceYears==null){
+            $experianceYears=0;
+        }
+
         $data = Job::join('company','job.company_id','company.id')
          ->select(
                   'job.id',
@@ -57,7 +71,7 @@ class JobController extends Controller
                   'job.requiredEducationLevel',
                   'job.company_id',
                   'company.cName as company_name'
-          )->get();
+          )->where('requiredExperienceYears','=',$experianceYears)->get();
 
            return view('Job.suitable-Jobs', compact('data'));
     }
