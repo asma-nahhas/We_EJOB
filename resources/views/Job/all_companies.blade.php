@@ -39,7 +39,7 @@
       <div id="content" width="100" >
       	<br/>
      
-       <h2> <center>Manage Jobs </center></h2>
+       <h2> <center>Manage Companies </center></h2>
 
         <br/>
     
@@ -48,40 +48,21 @@
 <div style="margin-left:100px;">
 <a href="{{ url('/home') }}" class="btn btn-info">Back Home</a>
 <button   type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-Add Job
+Add Company
 </button>
-<div style="margin-left:500px;" >
 
-  <form   id="sendFilterForm" method="POST" >
-       {{ csrf_field() }}
-     <input type="hidden" id="filter" name="filter" >
- </form>
-
-<select id="orderBy">
-  <option value="requiredEducationLevel" selected="selected"> Required Level</option>
-  <option value="requiredExperienceYears">Required Years</option>
-</select>
-<button  onclick="order($('#orderBy').val());" class="btn btn-info btn-sm">Order</button>
-
-
-
-</div>
 
 </div>
 
 <br/>
 <br/>
 
-            <table align="center" class="table" id="JobTable" style="width:900px;  border-collapse: collapse;">
+            <table align="center" class="table" id="CompanyTable" style="width:900px;  border-collapse: collapse;">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Salary</th>
-                        <th>Required Years</th>
-                        <th>Required Level</th>
-                        <th>Company</th>
-                        <th>Company ID</th>
-                    
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Telephone</th>
                         <th>Update</th>
                         <th>Delete</th>
                   
@@ -91,19 +72,17 @@ Add Job
 
                   @foreach($data as $element)
                   <tr>
-		                  <td>{{$element->title}}</td>
-		                  <td>{{$element->salary}}</td>
-		                  <td>{{$element->requiredExperienceYears}}</td>
-		                  <td>{{$element->requiredEducationLevel}}</td>
-		                  <td>{{$element->company_name}}</td>
-                      <td>{{$element->company_id}}</td>
+		                  <td>{{$element->cName}}</td>
+		                  <td>{{$element->email}}</td>
+		                  <td>{{$element->tel}}</td>
+
              
              
 
                   <td><button class="btn btn-success" data-toggle="modal" data-target="#editModalCenter"  onclick="updatefunc({{$element}})"><i class="fa fa-edit"></i></button></td> 
                   <td>
                   
-                  <form action="{{url('Job',$element->id)}}" method="post">
+                  <form action="{{url('Company',$element->id)}}" method="post">
                     {{ method_field('DELETE') }}
                       {{ csrf_field() }}
                     <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
@@ -127,44 +106,36 @@ Add Job
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Job</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Company</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <!--Start Form Modal-->
-  <form  action="{{  action('JobController@store') }}"  method="POST" enctype="multipart/form-data">
+  <form  action="{{  action('CompanyController@store') }}"  method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
 
           <div class="form-group">
-            <label for="Name">Company</label>
-            <input type="text" class="form-control" name="Company" aria-describedby="Company" placeholder="Enter Job Company">
+            <label for="Name">Company Name</label>
+            <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Enter Company Name">
            
           </div>
 
           <div class="form-group">
-            <label for="Name">Title</label>
-            <input type="text" class="form-control" name="Title" aria-describedby="Title" placeholder="Enter Job Title">
+            <label for="Name">Email</label>
+            <input type="text" class="form-control" name="email" aria-describedby="email" placeholder="Enter Company Email">
            
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Job Salary</label>
-            <input  class="form-control" name="Salary" placeholder="Enter Job Salary"> </input> 
+            <label for="exampleInputPassword1">Company Telephone</label>
+            <input  class="form-control" name="tel" placeholder="Enter Company Telephone"> </input> 
           </div>
 
           <div class="form-group">
-            <label for="exampleInputPassword1">Required Education Level</label>
-            <input  class="form-control" name="Level" placeholder="Enter Job Required Education Level"> </input> 
+            <label for="exampleInputPassword1">Company Password</label>
+            <input  class="form-control" name="password" placeholder="Enter Company Password"> </input> 
           </div>
-
-         <div class="form-group">
-            <label for="exampleInputPassword1">Required Experiance Years</label>
-            <input  class="form-control" name="Years" placeholder="Enter Job Required Experiance Years"> </input> 
-          </div>
-
-     
-
 
               </div>
               <div class="modal-footer">
@@ -187,7 +158,7 @@ Add Job
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editModalCenterTitle">Edit Job</h5>
+        <h5 class="modal-title" id="editModalCenterTitle">Edit Company</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -200,25 +171,19 @@ Add Job
       <input type="hidden" class="form-control" name="editId" id="editId" >
 
           <div class="form-group">
-            <label for="Name">Title</label>
-            <input type="text" class="form-control" name="editTitle" id="editTitle" aria-describedby="Title" placeholder="Enter Job Title">
+            <label for="Name">Name</label>
+            <input type="text" class="form-control" name="editName" id="editName" aria-describedby="Name" placeholder="Enter Company Name">
            
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Job Salary</label>
-            <input  class="form-control" name="editSalary" id="editSalary" placeholder="Enter Job Salary">
+            <label for="exampleInputPassword1">Company Email</label>
+            <input  class="form-control" name="editEmail" id="editEmail" placeholder="Enter Company Email">
           </div>
 
           <div class="form-group">
-            <label for="exampleInputPassword1">Required Experiance Years</label>
-            <input  class="form-control" name="editYears" id="editYears" placeholder="Enter Experiance Years">
+            <label for="exampleInputPassword1">Company Telephone</label>
+            <input  class="form-control" name="editTele" id="editTele" placeholder="Enter Company Telephone">
           </div>
-
-         <div class="form-group">
-            <label for="exampleInputPassword1">Required Education Level</label>
-            <input  class="form-control" name="editLevel" id="editLevel" placeholder="Enter Required Education Level">
-          </div>
-     
 
 
               </div>
@@ -271,13 +236,12 @@ Add Job
 
 
         $("#editId").val($element["id"]);
-        $("#editTitle").val($element["title"]);
-        $("#editSalary").val($element["salary"]);
-        $("#editLevel").val($element["requiredEducationLevel"]);
-        $("#editYears").val($element["requiredExperienceYears"]);
+        $("#editName").val($element["cName"]);
+        $("#editEmail").val($element["email"]);
+        $("#editTele").val($element["tel"]);
     
 
-       $("#editForm").attr('action', '{{url("Job",'+$element["id"]+')}}');
+       $("#editForm").attr('action', '{{url("Company",'+$element["id"]+')}}');
 
         
        
@@ -288,24 +252,13 @@ Add Job
      function deletefunc($id){
       
 
-              $("#deleteModalCenter").attr('action', '{{  url("Job.destroy",'+$id+') }}');
+              $("#deleteModalCenter").attr('action', '{{  url("Company.destroy",'+$id+') }}');
 
        
 
 
       }
 
-    function order($filter){
-
- 
-      $("#filter").val($filter);
-      $("#sendFilterForm").attr('action', '{{  url("manageJobs") }}');
-
-       $("#sendFilterForm").submit();
-
-       
-      
-    }
 
  
     </script>

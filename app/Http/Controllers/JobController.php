@@ -144,7 +144,9 @@ class JobController extends Controller
 
         $this->validate($request,[
             'editTitle'=>'required',
-            'editSalary'=>'required'
+            'editSalary'=>'required',
+            'editLevel'=>'required',
+            'editYears'=>'required',
 
         ]);
 
@@ -153,12 +155,15 @@ class JobController extends Controller
 
         $form_data = array(
             'title'       =>   $request->input('editTitle'),
-            'salary'        =>   $request->input('editSalary')
+            'salary'        =>   $request->input('editSalary'),
+            'requiredExperienceYears'        =>   $request->input('editYears'),
+            'requiredEducationLevel'        =>   $request->input('editLevel')
+
         );
         
         Job::whereId($request->input('editId'))->update($form_data);
 
-        return redirect('suitableJobs')->with('success', 'Data is successfully updated');  
+        return redirect('manageJobs')->with('success', 'Data is successfully updated');  
     }
 
     /**
@@ -174,6 +179,6 @@ class JobController extends Controller
         $data = Job::findOrFail($id);
         $data->delete();
 
-        return redirect('suitableJobs')->with('success', 'Data is successfully deleted');
+        return redirect('manageJobs')->with('success', 'Data is successfully deleted');
     }
 }

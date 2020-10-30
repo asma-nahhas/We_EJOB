@@ -72,6 +72,11 @@ Route::resource('/Diploma', 'DiploamaController');
 
 Route::get('/manageJobs', 'JobController@index');
 Route::post('/manageJobs', 'JobController@index');
+
+
 Route::get('/manageCandidates', 'CandidateController@index');
+
 Route::get('/manageCompanies', 'CompanyController@index');
+
+
 Route::get('/myProfile', 'CandidateController@create');
