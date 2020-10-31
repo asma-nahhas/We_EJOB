@@ -1,6 +1,4 @@
 
-
-
 @extends('Job.Header')
 @section('content')
 
@@ -33,26 +31,36 @@
 
 @endif
         
-     
-
-
         <!-- Page Content  -->
 
-      <div id="content"   >
-      	<br/>
-     
+ 
+
+
+
+
+
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+             
+
+                <div class="card-body">
+
+                       <div id="content"   >
+        <br/>
+      <br/>
+      <br/>
        <h2> <center>My Profile</center></h2>
 
         <br/>
 </div>
-<div style="margin-left:100px;">
+
+
 <a href="{{ url('/home') }}" class="btn btn-info">Back Home</a>
-
-
-
-</div>
-
-<div  style="margin-left:400px; width:864px;"  >
+<br/><br/>
         <!--Start Form Modal-->
   <form  action="{{  action('CandidateController@store2') }}"  method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
@@ -79,7 +87,7 @@
           </div>
 
               </div>
-              <div class="modal-footer" style="margin-right:600px;">
+              <div class="modal-footer" >
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
@@ -88,7 +96,11 @@
 
 </div>
 
-
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

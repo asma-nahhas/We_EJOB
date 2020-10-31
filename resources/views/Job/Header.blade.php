@@ -55,20 +55,8 @@
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-nav-first">
                          <li class="active"><a href="{{ url('index') }}">Home</a></li>
-                         <li><a href="{{ url('jobsList') }}">Jobs</a></li>
-                         <li><a href="{{ url('about') }}">About</a></li>
-                         <li><a href="{{ url('blogPosts') }}">Companies</a></li>
-                         <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
-                              
-                              <ul class="dropdown-menu">
-                                   <li><a href="{{ url('team') }}">Team</a></li>
-                                   <li><a href="{{ url('testiMonials') }}">Candidates</a></li>
-                                   <li><a href="{{ url('terms') }}">Terms</a></li>
-                              </ul>
-                         </li>
-                         <li><a href="{{ url('contact') }}">Contact Us</a></li>
-                           @guest
+
+                     @guest
                           <li>  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                           </li>
                            @if (Route::has('register'))
@@ -102,6 +90,12 @@
                                 </div>
                             </li>
                         @endguest
+                    
+                         <li><a href="{{ url('about') }}">About</a></li>
+                     
+                    
+                         <li><a href="{{ url('contact') }}">Contact Us</a></li>
+  
                     </ul>
 
 

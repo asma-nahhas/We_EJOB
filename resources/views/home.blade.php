@@ -2,9 +2,6 @@
 <html>
 <head>
  
-
-
-
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
         
@@ -95,12 +92,15 @@ div.content {
                  
                       <a href="{{url('manageCandidates')}}"><span class="fas fa-address-card  mr-3"></span> Candidates</a>
                 
-                      <a href="{{url('manageCompanies')}}"><span class="fas fa-building  mr-3"></span> Manage Companies</a>
+                      <a href="{{url('manageCompanies')}}"><span class="fas fa-building  mr-3"></span> All Companies</a>
                    
           @endif
          @if (Auth::user()->type=="Company")
       
             <a href="{{url('manageJobs')}}"><span class="fas fa-tag mr-3"></span>Manage Jobs</a>
+
+
+            <a href="{{url('manageCompanies')}}"><span class="fas fa-building  mr-3"></span>Company Profile</a>
          
             <a href="{{url('manageCandidates')}}"><span class="fas fa-address-card  mr-3"></span> Candidates</a>
        

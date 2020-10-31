@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Company;
+use Log;
+use Auth;
 
 
 class CompanyController extends Controller
@@ -18,10 +20,21 @@ class CompanyController extends Controller
     {
         //
 
-         $data = Company::orderBy('cName','desc')->paginate(8);
-          return view('Job.all_companies', compact('data'));
+         $companyName = Auth::user()->name; 
 
-    }
+          if($companyName=='admin'){
+
+         $data = Company::orderBy('cName','desc')->paginate(8);
+
+     }else{
+
+     $data = Company::where('cName','=',$companyName)->orderBy('cName','desc')->paginate(8);
+
+     }
+          return view('Job.all_companies', compact('data'));
+     }
+
+    
 
     /**
      * Show the form for creating a new resource.
