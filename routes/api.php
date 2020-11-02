@@ -3,6 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\User;
+use App\Candidate;
+use App\Job;
+use App\Diploma;
+use App\Company;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,4 +22,60 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::get('users', function() {
+
+    return User::all();
+});
+ 
+
+ Route::get('jobs', function() {
+
+    return Job::all();
+});
+
+ Route::get('filterJobsApi','JobController@indexApi');
+
+
+ Route::post('createJobApi','JobController@storeApi');
+
+
+
+ Route::get('candidates', function() {
+
+    return Candidate::all();
+});
+
+ Route::get('diplomas', function() {
+
+    return Diploma::all();
+});
+
+ Route::get('companies', function() {
+
+    return Company::all();
+});
+
+
+Route::get('users/{id}', function($id) {
+    return User::find($id);
+});
+
+Route::post('users', function(Request $request) {
+    return User::create($request->all);
+});
+
+Route::put('users/{id}', function(Request $request, $id) {
+    $user = User::findOrFail($id);
+    $user->update($request->all());
+
+    return $user;
+});
+
+Route::delete('users/{id}', function($id) {
+    User::find($id)->delete();
+
+    return 204;
 });

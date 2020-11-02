@@ -73,6 +73,43 @@ class JobController extends Controller
         return view('Job.all_jobs', compact(['data','companies']));
     }
 
+
+
+    /**
+    Get Filtered Jobs Api
+    **/
+
+        public function indexApi(Request $request)
+    {
+        //
+     
+        $filter=$request->input('filter');
+
+         Log::info($filter);
+        if($filter==null){
+
+              $filter='requiredExperienceYears';
+        }
+        Log::info($filter);
+
+       
+
+        $data=Job::join('company','job.company_id','company.id')
+         ->select(
+                  'job.id',
+                  'job.title',
+                  'job.requiredExperienceYears',
+                  'job.salary',
+                  'job.requiredEducationLevel',
+                  'job.company_id',
+                  'company.cName as company_name'
+          )->orderBy($filter,'desc')->get();
+
+ 
+
+        return $data;
+    }
+
     /**
       Get All specific Candidate Suitable Jobs
     **/
@@ -151,6 +188,40 @@ class JobController extends Controller
 
 
         return redirect('manageJobs')->with('success','Data Saved');
+    }
+
+    /**
+    Store New Job API
+    **/
+
+       public function storeApi(Request $request)
+    {
+            $this->validate($request,[
+            'Title'=>'required',
+            'Salary'=>'required',
+            'Level'=>'required',
+            'Years'=>'required',
+            'Company'=>'required'
+
+
+        ]);
+
+       
+
+
+        $job=new Job;
+        $job->company_id=$request->input('Company');
+        $job->title=$request->input('Title');
+        $job->salary=$request->input('Salary');
+        $job->requiredEducationLevel=$request->input('Level');
+        $job->requiredExperienceYears=$request->input('Years');
+    
+
+        $job->save();
+
+
+
+        return  response()->json(Job::All());
     }
 
     /**
