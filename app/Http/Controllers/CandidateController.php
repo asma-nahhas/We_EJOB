@@ -120,6 +120,39 @@ class CandidateController extends Controller
         return redirect('myProfile')->with('success','Data Saved');
     }
 
+
+
+        public function storeCandidateApi(Request $request)
+    {
+        //
+
+         $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+            'experienceYears'=>'required',
+            'password'=>'required'
+
+
+        ]);
+
+       
+
+
+        $candidate=new Candidate;
+        $candidate->name=$request->input('name');
+        $candidate->email=$request->input('email');
+        $candidate->experienceYears=$request->input('experienceYears');
+        $candidate->password=$request->input('password');
+
+    
+
+        $candidate->save();
+
+
+
+        return response()->json($candidate);
+    }
+
     /**
      * Display the specified resource.
      *

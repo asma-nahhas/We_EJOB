@@ -41,6 +41,9 @@ Route::get('users', function() {
 
  Route::post('createJobApi','JobController@storeApi');
 
+ Route::get('getSuitableJobApi','JobController@getSuitableApi');
+ 
+
 
 
  Route::get('candidates', function() {
@@ -48,10 +51,19 @@ Route::get('users', function() {
     return Candidate::all();
 });
 
+ 
+
+  Route::post('createCandidateApi','CandidateController@storeCandidateApi');
+
+
  Route::get('diplomas', function() {
 
     return Diploma::all();
 });
+
+ Route::post('createDiplomaApi','DiploamaController@storeDiplomaApi');
+
+
 
  Route::get('companies', function() {
 

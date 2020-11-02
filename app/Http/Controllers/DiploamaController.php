@@ -65,6 +65,40 @@ class DiploamaController extends Controller
         return redirect('manageDiploma')->with('success','Data Saved');
     }
 
+
+
+    /**
+    Store Diploma Api
+    **/
+
+        public function storeDiplomaApi(Request $request)
+    {
+        //
+
+            $this->validate($request,[
+            'candidate_id'=>'required',
+            'diplomaTitle'=>'required'
+
+
+        ]);
+
+       
+
+
+        $Diploma=new Diploma;
+        $Diploma->candidate_id=$request->input('candidate_id');
+        $Diploma->diplomaTitle=$request->input('diplomaTitle');
+
+
+    
+
+        $Diploma->save();
+
+
+
+        return response()->json($Diploma);
+    }
+
     /**
      * Display the specified resource.
      *

@@ -144,6 +144,50 @@ class JobController extends Controller
            return view('Job.suitable-Jobs', compact('data'));
     }
 
+
+    /**
+
+    Get Suitable Jobs API
+
+    **/
+
+        public function getSuitableApi(Request $request){
+
+        $experianceYears=0;
+        $diploma='Bachelor';
+
+
+         $experianceYears= $request->input('experianceYears');
+          $diploma=  $request->input('diploma');
+
+       
+
+        if($experianceYears==null){
+            $experianceYears=0;
+        }
+
+        if($diploma==null){
+            $diploma='Bachelor';
+        }
+
+         Log::info($experianceYears);
+
+         Log::info($diploma);
+
+        $data = Job::join('company','job.company_id','company.id')
+         ->select(
+                  'job.id',
+                  'job.title',
+                  'job.requiredExperienceYears',
+                  'job.salary',
+                  'job.requiredEducationLevel',
+                  'job.company_id',
+                  'company.cName as company_name'
+          )->where([['requiredExperienceYears','=',$experianceYears],['requiredEducationLevel','=',$diploma]])->get();
+
+           return response()->json($data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
