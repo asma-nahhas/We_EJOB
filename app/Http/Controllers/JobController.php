@@ -188,6 +188,15 @@ class JobController extends Controller
            return response()->json($data);
     }
 
+
+    public function test(){
+
+      return response()->json([
+    'name' => 'Abigail',
+    'state' => 'CA'
+]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

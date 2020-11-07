@@ -29,6 +29,8 @@ Route::get('users', function() {
 
     return User::all();
 });
+
+ Route::get('test','JobController@test');
  
 
  Route::get('jobs', function() {
