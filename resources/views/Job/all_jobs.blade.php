@@ -35,26 +35,27 @@
 
 @endif
         
-        <div class="wrapper d-flex align-items-stretch">
 
 
         <!-- Page Content  -->
 
       <div id="content" width="100" >
       	<br/>
+          <br/>
+         <br/>
      
        <h2> <center>Manage Jobs </center></h2>
 
         <br/>
-    
+   
 
 <!-- Button trigger modal -->
-<div style="margin-left:100px;">
+<div class="container">
 <a href="{{ url('/home') }}" class="btn btn-info">Back Home</a>
 <button   type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
 Add Job
 </button>
-<div style="margin-left:500px;" >
+
 
   <form   id="sendFilterForm" method="POST" >
        {{ csrf_field() }}
@@ -75,7 +76,7 @@ Add Job
 
 <br/>
 <br/>
-<div class="container">
+ <div class="container">
 
             <table align="center" class="table" id="JobTable" >
                 <thead>
@@ -125,7 +126,6 @@ Add Job
 </div>
 
 
-</div>
 
 <!--Start Add Modal-->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
