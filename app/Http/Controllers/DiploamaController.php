@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Diploma;
-
+use Auth;
 
 class DiploamaController extends Controller
 {
@@ -17,8 +17,20 @@ class DiploamaController extends Controller
     public function index()
     {
         //
+
+          $candidate_id=Auth::user()->id; 
+          $admin_flag=Auth::user()->name;
+
+          if($admin_flag=="admin"){
           $data = Diploma::orderBy('diplomaTitle','desc')->paginate(8);
           return view('Job.add_diploma', compact('data'));
+      }
+      else{
+
+         $data = Diploma::where('candidate_id','=',$candidate_id)->orderBy('diplomaTitle','desc')->paginate(8);
+          return view('Job.add_diploma', compact('data'));
+
+      }
     }
 
     /**

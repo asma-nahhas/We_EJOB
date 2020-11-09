@@ -1,5 +1,17 @@
 
 @extends('Job.Header')
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+ 
+          
+
+
+
 @section('content')
 
   <br/>
@@ -56,9 +68,9 @@ Add Diploma
 
 <br/>
 <br/>
-
-            <table align="center" class="table" id="DiplomaTable" style="width:900px;  border-collapse: collapse;">
-                <thead>
+ <div class="container">
+       <table class="table">
+     <thead>
                     <tr>
                         <th>Candidate Id</th>
                         <th>Diploma Title</th>
@@ -71,9 +83,9 @@ Add Diploma
 
                   @foreach($data as $element)
                   <tr>
-		                  <td>{{$element->candidate_id}}</td>
-		                  <td>{{$element->diplomaTitle}}</td>
-		              
+                      <td>{{$element->candidate_id}}</td>
+                      <td>{{$element->diplomaTitle}}</td>
+                  
 
              
              
@@ -92,9 +104,8 @@ Add Diploma
                   </tr>   
                   @endforeach
                 </tbody>
-               
-
-            </table>
+  </table>
+</div>
 
 
 
