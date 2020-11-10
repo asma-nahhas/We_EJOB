@@ -9,6 +9,16 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Http\Request;
+
+use App\Candidate;
+
+use App\Company;
+
+use Auth;
+
+use Log;
+
 class RegisterController extends Controller
 {
     /*
@@ -53,6 +63,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'type' => [ 'string'],
+            'tel' => ['string','max:10','required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -66,12 +77,53 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        return User::create([
+       
+
+        $user= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'type' => $data['type']
 
         ]);
+
+        $id = $user->id;
+
+        if($data['type']=='Company')
+        {
+
+       Log::info("it is a company");
+
+        $company=new Company;
+        $company->id=$id;
+        $company->cName=$data['name'];
+        $company->email=$data['email'];
+        $company->tel=$data['tel'];
+        $company->password=$data['password'];
+
+          $company->save();
+    }
+   if($data['type']=='Candidate')
+    {
+         Log::info("it is a candidate");
+         $candidate=new Candidate;
+         $candidate->id=$id;
+        $candidate->name=$data['name'];
+        $candidate->email=$data['email'];
+        $candidate->experienceYears=0;
+        $candidate->tel=$data['tel'];
+        $candidate->password=$data['password'];
+
+    
+
+        $candidate->save();
+
+
+    }
+
+      
+
+
+         return $user;
     }
 }

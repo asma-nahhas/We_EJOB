@@ -31,7 +31,7 @@ class CandidateController extends Controller
     {
         //
         $id = Auth::id(); 
-        $data = User::where('id','=',$id)->first();
+        $data = Candidate::where('id','=',$id)->first();
 
           return view('Job.Create_Profile', compact('data'));
     }
@@ -50,6 +50,7 @@ class CandidateController extends Controller
             'name'=>'required',
             'email'=>'required',
             'experienceYears'=>'required',
+            'tel' =>'required',
             'password'=>'required'
 
 
@@ -63,6 +64,7 @@ class CandidateController extends Controller
         $candidate->email=$request->input('email');
         $candidate->experienceYears=$request->input('experienceYears');
         $candidate->password=$request->input('password');
+        $candidate->tel=$request->input('tel');
 
     
 
@@ -81,7 +83,8 @@ class CandidateController extends Controller
             'name'=>'required',
             'email'=>'required',
             'experienceYears'=>'required',
-            'password'=>'required'
+            'password'=>'required',
+            'tel'=>'required'
 
 
         ]);
@@ -99,6 +102,8 @@ class CandidateController extends Controller
         $candidate->email=$request->input('email');
         $candidate->experienceYears=$request->input('experienceYears');
         $candidate->password=$request->input('password');
+        $candidate->tel=$request->input('tel');
+
 
     
 
@@ -109,7 +114,8 @@ class CandidateController extends Controller
          $form_data = array(
             'name'             =>   $request->input('name'),
             'email'            =>   $request->input('email'),
-            'experienceYears'  =>   $request->input('experienceYears')
+            'experienceYears'  =>   $request->input('experienceYears'),
+            'tel'              =>   $request->input('tel')
 
         );
         
@@ -130,7 +136,8 @@ class CandidateController extends Controller
             'name'=>'required',
             'email'=>'required',
             'experienceYears'=>'required',
-            'password'=>'required'
+            'password'=>'required',
+            'tel' => 'required'
 
 
         ]);
@@ -143,6 +150,7 @@ class CandidateController extends Controller
         $candidate->email=$request->input('email');
         $candidate->experienceYears=$request->input('experienceYears');
         $candidate->password=$request->input('password');
+        $candidate->tel=$request->input('tel');
 
     
 
@@ -189,17 +197,19 @@ class CandidateController extends Controller
      $this->validate($request,[
             'editName'=>'required',
             'editEmail'=>'required',
-            'editExperianceYears'=>'required'
+            'editExperianceYears'=>'required',
+            'editTel'=>'required'
 
         ]);
 
-        $company=Candidate::findOrFail($request->input('editId'));
+        $candidate=Candidate::findOrFail($request->input('editId'));
 
 
         $form_data = array(
             'name'             =>   $request->input('editName'),
             'email'            =>   $request->input('editEmail'),
-            'experienceYears'  =>   $request->input('editExperianceYears')
+            'experienceYears'  =>   $request->input('editExperianceYears'),
+            'tel'              => $request->input('editTel')
 
         );
         

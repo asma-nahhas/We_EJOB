@@ -19,6 +19,7 @@ class CreateCandidateTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('tel');
             $table->string('experienceYears');
             $table->rememberToken();
             $table->timestamps();

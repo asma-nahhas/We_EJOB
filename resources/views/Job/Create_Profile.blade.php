@@ -53,6 +53,8 @@
         <br/>
       <br/>
       <br/>
+         <br/>
+      <br/>
        <h2> <center>My Profile</center></h2>
 
         <br/>
@@ -78,8 +80,14 @@
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Candidate Experiance Years</label>
-            <input  class="form-control input-sm" name="experienceYears"  placeholder="Enter Candidate Experiance Years"> </input> 
+            <input  class="form-control input-sm" name="experienceYears"   value="{{$data->experienceYears}}" placeholder="Enter Candidate Experiance Years"> </input> 
           </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Candidate Telephone</label>
+            <input  class="form-control input-sm" name="tel" value="{{$data->tel}}" > </input> 
+          </div>
+
 
           <div class="form-group">
             <label for="exampleInputPassword1">Candidate Password</label>

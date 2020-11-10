@@ -55,7 +55,8 @@ class DiploamaController extends Controller
 
             $this->validate($request,[
             'candidate_id'=>'required',
-            'diplomaTitle'=>'required'
+            'diplomaTitle'=>'required',
+             'diplomaType'=>'required'
 
 
         ]);
@@ -66,6 +67,7 @@ class DiploamaController extends Controller
         $Diploma=new Diploma;
         $Diploma->candidate_id=$request->input('candidate_id');
         $Diploma->diplomaTitle=$request->input('diplomaTitle');
+        $Diploma->diplomaType=$request->input('diplomaType');
 
 
     
@@ -89,7 +91,9 @@ class DiploamaController extends Controller
 
             $this->validate($request,[
             'candidate_id'=>'required',
-            'diplomaTitle'=>'required'
+            'diplomaTitle'=>'required',
+            'diplomaType'=>'required'
+
 
 
         ]);
@@ -100,6 +104,7 @@ class DiploamaController extends Controller
         $Diploma=new Diploma;
         $Diploma->candidate_id=$request->input('candidate_id');
         $Diploma->diplomaTitle=$request->input('diplomaTitle');
+         $Diploma->diplomaType=$request->input('diplomaType');
 
 
     
@@ -146,7 +151,8 @@ class DiploamaController extends Controller
 
 
           $this->validate($request,[
-            'editDiplomaTitle'=>'required'
+            'editDiplomaTitle'=>'required',
+            'editDiplomaType' => 'required'
 
         ]);
 
@@ -154,7 +160,8 @@ class DiploamaController extends Controller
 
 
         $form_data = array(
-            'diplomaTitle'       =>   $request->input('editDiplomaTitle')
+            'diplomaTitle'       =>   $request->input('editDiplomaTitle'),
+             'diplomaType'       =>   $request->input('editDiplomaType')
 
         );
         

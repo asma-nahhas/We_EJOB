@@ -73,6 +73,7 @@ Add Diploma
      <thead>
                     <tr>
                         <th>Candidate Id</th>
+                        <th>Diploma Type</th>
                         <th>Diploma Title</th>
                         <th>Update</th>
                         <th>Delete</th>
@@ -84,6 +85,7 @@ Add Diploma
                   @foreach($data as $element)
                   <tr>
                       <td>{{$element->candidate_id}}</td>
+                      <td>{{$element->diplomaType}}</td>
                       <td>{{$element->diplomaTitle}}</td>
                   
 
@@ -133,6 +135,18 @@ Add Diploma
           </div>
 
           <div class="form-group">
+            <label for="Name">Diploma Type</label>
+            <select type="text" class="form-control" name="diplomaType" aria-describedby="diplomaType" placeholder="Enter Diploma Type">
+              <option value="Master" >Master</option>
+              <option value="PHD" >PHD</option>
+              <option value="Diploma" >Diploma</option>
+              <option value="Bachelor" >Bachelor</option>
+
+            </select>
+           
+          </div>
+
+          <div class="form-group">
             <label for="Name">Diploma Title</label>
             <input type="text" class="form-control" name="diplomaTitle" aria-describedby="diplomaTitle" placeholder="Enter Diploma Title">
            
@@ -172,6 +186,16 @@ Add Diploma
        {{ csrf_field() }}
       <input type="hidden" class="form-control" name="editId" id="editId" >
 
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Diploma Type</label>
+            <select  class="form-control" name="editDiplomaType" id="editDiplomaType" placeholder="Enter Diploma Type">
+              <option value="Master" >Master</option>
+              <option value="PHD" >PHD</option>
+              <option value="Diploma" >Diploma</option>
+              <option value="Bachelor" >Bachelor</option>
+            </select>
+          </div>
 
           <div class="form-group">
             <label for="exampleInputPassword1">Diploma Title</label>
@@ -230,6 +254,7 @@ Add Diploma
 
 
         $("#editId").val($element["id"]);
+        $("#editDiplomaType").val($element["diplomaType"]);
         $("#editDiplomaTitle").val($element["diplomaTitle"]);
 
     

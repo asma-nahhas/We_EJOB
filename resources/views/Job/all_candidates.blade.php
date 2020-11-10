@@ -71,6 +71,7 @@ Add Candidate
                         <th>Name</th>
                         <th>Email</th>
                         <th>Experiance Years</th>
+                        <th>Telephone Number</th>
                         <th>Update</th>
                         <th>Delete</th>
                   
@@ -83,6 +84,7 @@ Add Candidate
 		                  <td>{{$element->name}}</td>
 		                  <td>{{$element->email}}</td>
 		                  <td>{{$element->experienceYears}}</td>
+                      <td>{{$element->tel}}</td>
 
              
              
@@ -135,6 +137,13 @@ Add Candidate
             <input type="text" class="form-control" name="email" aria-describedby="email" placeholder="Enter Candidate Email">
            
           </div>
+
+         <div class="form-group">
+            <label for="Name">Telephone</label>
+            <input type="text" class="form-control" name="tel" aria-describedby="tel" placeholder="Enter Telephone Number">
+           
+          </div>
+
           <div class="form-group">
             <label for="exampleInputPassword1">Candidate Experiance Years</label>
             <input  class="form-control" name="experienceYears" placeholder="Enter Candidate Experiance Years"> </input> 
@@ -193,6 +202,11 @@ Add Candidate
             <input  class="form-control" name="editExperianceYears" id="editExperianceYears" placeholder="Enter Candidate Experiance Years">
           </div>
 
+          <div class="form-group">
+            <label for="exampleInputPassword1">Candidate Telephone Number</label>
+            <input  class="form-control" name="editTel" id="editTel" placeholder="Enter Telephone Number ">
+          </div>
+
 
               </div>
               <div class="modal-footer">
@@ -246,6 +260,7 @@ Add Candidate
         $("#editId").val($element["id"]);
         $("#editName").val($element["name"]);
         $("#editEmail").val($element["email"]);
+         $("#editTel").val($element["tel"]);
         $("#editExperianceYears").val($element["experienceYears"]);
     
 

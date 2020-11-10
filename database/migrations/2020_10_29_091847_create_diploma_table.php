@@ -18,6 +18,7 @@ class CreateDiplomaTable extends Migration
             $table->integer('candidate_id')->unsigned();
             $table->foreign('candidate_id')->references('id')->on('candidate');
             $table->string('diplomaTitle');
+            $table->string('diplomaType');
             $table->timestamps();
         });
     }
