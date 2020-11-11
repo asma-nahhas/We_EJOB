@@ -9,20 +9,88 @@ use App\Job;
 use App\Diploma;
 use App\Company;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/* 
+1
+
+POST
+
+Register API (if type candidate we create user then create candidate) (if user type company we create  user then company)
+
+*/
+
+ Route::post('RegisterApi','Auth\RegisterController@registerApi');
+
+
+/*
+2
+
+POST
+Login API (just need email and password) return Login succesfully
+
+*/
+
+
+
+/*
+3
+
+GET
+Suitable jobs by user id (we get matched jobs to user diploma and user experiance years) and send company name not just id
+*/
+
+
+
+/*
+4
+
+GET
+get jobs ordered by experiance years (order jobs orderer descing)  and send company name 
+*/
+
+
+
+
+/*
+5
+
+GET
+get jobs ordered by Diploma (order by diploma desc) and send company name
+*/
+
+
+
+/*
+6
+
+POST
+create company by admin this will add a new user first then this company
+*/
+
+
+
+/*
+7
+
+POST
+
+create new job request 
+*/
+
+
+/*
+8
+
+GET
+list of candidaates suitable for a specicfic job ( I get the job id and return all candidates suitaable for this job)
+*/
+
+
+
 
 
 Route::get('users', function() {

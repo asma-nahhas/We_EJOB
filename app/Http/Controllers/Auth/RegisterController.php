@@ -15,6 +15,8 @@ use App\Candidate;
 
 use App\Company;
 
+use App\Diploma;
+
 use Auth;
 
 use Log;
@@ -126,4 +128,78 @@ class RegisterController extends Controller
 
          return $user;
     }
+
+
+
+
+
+        protected function registerApi(Request $request)
+    {
+
+       
+
+        $user= User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'type' => $request->input('type')
+
+        ]);
+
+        $id = $user->id;
+
+        if($request->input('type')=='Company')
+        {
+
+       Log::info("it is a company");
+
+        $company=new Company;
+        $company->id=$id;
+        $company->cName=$request->input('name');
+        $company->email=$request->input('email');
+        $company->tel=$request->input('tel');
+        $company->password=$request->input('password');
+
+          $company->save();
+    }
+
+   if($request->input('type')=='Candidate')
+    {
+        Log::info("it is a candidate");
+        $candidate=new Candidate;
+        $candidate->id=$id;
+        $candidate->name=$request->input('name');
+        $candidate->email=$request->input('email');
+        $candidate->experienceYears=0;
+        $candidate->tel=$request->input('tel');
+        $candidate->password=$request->input('password');
+           $candidate->experienceYears=$request->input('experienceYears');
+
+    
+
+        $candidate->save();
+
+
+        if($request->input('diplomaType')!=null){
+
+            $Diploma=new Diploma;
+            $Diploma->candidate_id=$id;
+            $Diploma->diplomaTitle=$request->input('diplomaTitle');
+            $Diploma->diplomaType=$request->input('diplomaType');
+            $Diploma->save();
+
+        }
+
+
+
+    }
+
+      
+
+
+         return response()->json(['message'=>'success', 'data'=>$user]);
+    }
+
+
+
 }
