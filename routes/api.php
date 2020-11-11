@@ -34,7 +34,7 @@ Login API (just need email and password) return Login succesfully
 
 */
 
-
+ Route::post('LoginApi','Auth\LoginController@loginApi');
 
 /*
 3

@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\User;
+use Auth;
+use Log;
+use App\Candidate;
 
 class LoginController extends Controller
 {
@@ -36,5 +42,43 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+
+         protected function loginApi(Request $request)
+    {
+                $email=$request->input('email');
+                $password=$request->input('password');
+
+
+               $user = Candidate::whereEmail($email)->first();
+
+
+                Log::info($password);
+
+                 Log::info($user->password);
+
+          
+
+
+
+
+
+                if($user!=null){
+
+                    if($user->password==$password){
+
+                     return response()->json(['message'=>'success', 'data'=>$user]);
+
+                 }else{
+
+                     return response()->json(['message'=>'password not correct']);
+                 }
+
+
+                }else{
+
+                     return response()->json(['message'=>'failed']);
+                }
     }
 }
