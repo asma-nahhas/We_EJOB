@@ -8,6 +8,7 @@ use Auth;
 use App\Job;
 use App\Company;
 use App\Candidate;
+use App\Diploma;
 
 class JobController extends Controller
 {
@@ -151,14 +152,21 @@ class JobController extends Controller
 
     **/
 
-        public function getSuitableApi(Request $request){
+     public function getSuitableJobApi(Request $request){
 
         $experianceYears=0;
         $diploma='Bachelor';
 
+        $candidate=Candidate::where('id','=',$request->input('id'))->first();
 
-         $experianceYears= $request->input('experianceYears');
-          $diploma=  $request->input('diploma');
+        $diplomaObj=Diploma::where('candidate_id','=',$request->input('id'))->first();
+
+
+         $experianceYears=  $candidate->experienceYears;
+         Log::info($candidate);
+         $diploma=$diplomaObj->diplomaType;
+         Log::info($diploma);
+      
 
        
 
@@ -183,10 +191,13 @@ class JobController extends Controller
                   'job.requiredEducationLevel',
                   'job.company_id',
                   'company.cName as company_name'
-          )->where([['requiredExperienceYears','=',$experianceYears],['requiredEducationLevel','=',$diploma]])->get();
+          )->where([['requiredExperienceYears','<=',$experianceYears],['requiredEducationLevel','=',$diploma]])->get();
 
            return response()->json($data);
     }
+
+
+
 
 
     public function test(){
@@ -252,9 +263,9 @@ class JobController extends Controller
             $this->validate($request,[
             'Title'=>'required',
             'Salary'=>'required',
-            'Level'=>'required',
+            'Diploma'=>'required',
             'Years'=>'required',
-            'Company'=>'required'
+            'Company_id'=>'required'
 
 
         ]);
@@ -263,10 +274,10 @@ class JobController extends Controller
 
 
         $job=new Job;
-        $job->company_id=$request->input('Company');
+        $job->company_id=$request->input('Company_id');
         $job->title=$request->input('Title');
         $job->salary=$request->input('Salary');
-        $job->requiredEducationLevel=$request->input('Level');
+        $job->requiredEducationLevel=$request->input('Diploma');
         $job->requiredExperienceYears=$request->input('Years');
     
 
@@ -274,7 +285,7 @@ class JobController extends Controller
 
 
 
-        return  response()->json(Job::All());
+        return  response()->json(['message'=>'Job Created successfully']);
     }
 
     /**

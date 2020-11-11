@@ -43,7 +43,7 @@ GET
 Suitable jobs by user id (we get matched jobs to user diploma and user experiance years) and send company name not just id
 */
 
-
+ Route::get('getSuitableJobApi','JobController@getSuitableJobApi');
 
 /*
 4
@@ -52,7 +52,7 @@ GET
 get jobs ordered by experiance years (order jobs orderer descing)  and send company name 
 */
 
-
+ Route::get('filterJobsByYearsApi','JobController@indexApi');
 
 
 /*
@@ -62,7 +62,7 @@ GET
 get jobs ordered by Diploma (order by diploma desc) and send company name
 */
 
-
+ Route::get('filterJobsByExperianceApi','JobController@indexApi');
 
 /*
 6
@@ -71,7 +71,7 @@ POST
 create company by admin this will add a new user first then this company
 */
 
-
+ Route::post('createCompanyApi','CompanyController@companyApi');
 
 /*
 7
@@ -81,6 +81,7 @@ POST
 create new job request 
 */
 
+ Route::post('createJobApi','JobController@storeApi');
 
 /*
 8
@@ -88,6 +89,13 @@ create new job request
 GET
 list of candidaates suitable for a specicfic job ( I get the job id and return all candidates suitaable for this job)
 */
+
+ Route::get('getSuitableCandidates', 'CandidateController@suitableCandidatesApi');
+
+
+
+
+
 
 
 
@@ -106,20 +114,17 @@ Route::get('users', function() {
     return Job::all();
 });
 
- Route::get('filterJobsApi','JobController@indexApi');
 
 
- Route::post('createJobApi','JobController@storeApi');
 
- Route::get('getSuitableJobApi','JobController@getSuitableApi');
+
+
+
  
 
 
 
- Route::get('candidates', function() {
 
-    return Candidate::all();
-});
 
  
 
