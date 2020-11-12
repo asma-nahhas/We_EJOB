@@ -13,6 +13,8 @@ use Log;
 use App\Candidate;
 use App\Company;
 
+use App\Diploma;
+
 class LoginController extends Controller
 {
     /*
@@ -50,7 +52,7 @@ class LoginController extends Controller
     {
                 $email=$request->input('email');
                 $password=$request->input('password');
-
+                 $diplomaObj=null;
 
                $user = User::whereEmail($email)->first();
 
@@ -68,6 +70,9 @@ class LoginController extends Controller
                       $user = Candidate::whereEmail($email)->first();
                       $type='Candidate';
 
+                      $diplomaObj=Diploma::where('candidate_id','=',$user->id)->get();
+                        Log::info($diplomaObj);
+
 
                 }
 
@@ -80,6 +85,12 @@ class LoginController extends Controller
                 if($user!=null){
 
                     if($user->password==$password){
+
+                 if($diplomaObj!=null){
+
+                         return response()->json(['message'=>'success','type'=>$type, 'data'=>$user,'Diploma'=> $diplomaObj]);
+                           
+                      }
 
                      return response()->json(['message'=>'success','type'=>$type, 'data'=>$user]);
 
