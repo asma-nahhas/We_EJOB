@@ -11,6 +11,7 @@ use App\User;
 use Auth;
 use Log;
 use App\Candidate;
+use App\Company;
 
 class LoginController extends Controller
 {
@@ -51,12 +52,26 @@ class LoginController extends Controller
                 $password=$request->input('password');
 
 
-               $user = Candidate::whereEmail($email)->first();
+               $user = User::whereEmail($email)->first();
 
 
                 Log::info($password);
 
+                if($user->type=='Company'){
+
+                      $user = Company::whereEmail($email)->first();
+
+
+                }else{
+
+                      $user = Candidate::whereEmail($email)->first();
+
+
+                }
+
                  Log::info($user->password);
+
+
 
           
 
