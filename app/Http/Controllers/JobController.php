@@ -125,7 +125,7 @@ class JobController extends Controller
 
  
 
-        return response()->json($data);;
+        return response()->json($data);
     }
 
     /**
@@ -169,6 +169,8 @@ class JobController extends Controller
 
     **/
 
+   
+
      public function getSuitableJobApi(Request $request){
 
         $experianceYears=0;
@@ -179,21 +181,17 @@ class JobController extends Controller
         $diplomaObj=Diploma::where('candidate_id','=',$request->input('id'))->orderBy('diplomaType','desc')->first();
 
 
+
+        if($candidate!=null){
          $experianceYears=  $candidate->experienceYears;
-         Log::info($candidate);
+       }
+        
+         if($diplomaObj!=null){
          $diploma=$diplomaObj->diplomaType;
-         Log::info($diploma);
+         }
+      
       
 
-       
-
-        if($experianceYears==null){
-            $experianceYears=0;
-        }
-
-        if($diploma==null){
-            $diploma='Bachelor';
-        }
 
          Log::info($experianceYears);
 
@@ -208,9 +206,15 @@ class JobController extends Controller
                   'job.requiredEducationLevel',
                   'job.company_id',
                   'company.cName as company_name'
-          )->where([['requiredExperienceYears','<=',$experianceYears],['requiredEducationLevel','=',$diploma]])->get();
+          )->where([['requiredExperienceYears','<=',$experianceYears],['requiredEducationLevel','LIKE','%'.$diploma.'%']])->get();
 
-           return response()->json($data);
+         
+
+          if($data==null || sizeof($data)==0)
+            return response()->json(['message'=>'No Data Found ']);
+          else
+
+           return response()->json(['message'=>'success','data'=>$data]);
     }
 
 

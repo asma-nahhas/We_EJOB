@@ -52,9 +52,14 @@ class LoginController extends Controller
     {
                 $email=$request->input('email');
                 $password=$request->input('password');
-                 $diplomaObj=null;
+                $diplomaObj=null;
 
                $user = User::whereEmail($email)->first();
+
+               if($user==null )
+                   return response()->json(['message'=>'No User has this Email ']);
+
+               else{
 
 
                 Log::info($password);
@@ -104,5 +109,7 @@ class LoginController extends Controller
 
                      return response()->json(['message'=>'Not Found User']);
                 }
+
+            }
     }
 }

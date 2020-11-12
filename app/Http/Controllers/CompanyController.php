@@ -128,7 +128,7 @@ class CompanyController extends Controller
 
 
 
-        return response()->json(['message'=>'Company Created successfully']);
+        return response()->json(['message'=>'Company Created successfully','data'=>$company]);
     }
 
 
