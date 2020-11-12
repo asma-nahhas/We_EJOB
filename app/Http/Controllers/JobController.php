@@ -176,7 +176,7 @@ class JobController extends Controller
 
         $candidate=Candidate::where('id','=',$request->input('id'))->first();
 
-        $diplomaObj=Diploma::where('candidate_id','=',$request->input('id'))->first();
+        $diplomaObj=Diploma::where('candidate_id','=',$request->input('id'))->orderBy('diplomaType','desc')->first();
 
 
          $experianceYears=  $candidate->experienceYears;
