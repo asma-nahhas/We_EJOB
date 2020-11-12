@@ -60,10 +60,6 @@ class LoginController extends Controller
 
           
 
-
-
-
-
                 if($user!=null){
 
                     if($user->password==$password){
@@ -78,7 +74,7 @@ class LoginController extends Controller
 
                 }else{
 
-                     return response()->json(['message'=>'failed']);
+                     return response()->json(['message'=>'Not Found User']);
                 }
     }
 }

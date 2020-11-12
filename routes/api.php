@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 POST
 
-Register API (if type candidate we create user then create candidate) (if user type company we create  user then company)
+Register API (if type candidate we create user then create candidate) (if user type company we create  user then company) --done
 
 */
 
@@ -30,7 +30,7 @@ Register API (if type candidate we create user then create candidate) (if user t
 2
 
 POST
-Login API (just need email and password) return Login succesfully
+Login API (just need email and password) return Login succesfully --done
 
 */
 
@@ -40,7 +40,7 @@ Login API (just need email and password) return Login succesfully
 3
 
 GET
-Suitable jobs by user id (we get matched jobs to user diploma and user experiance years) and send company name not just id
+Suitable jobs by user id (we get matched jobs to user diploma and user experiance years) and send company name not just id --done
 */
 
  Route::get('getSuitableJobApi','JobController@getSuitableJobApi');
@@ -68,17 +68,17 @@ get jobs ordered by Diploma (order by diploma desc) and send company name
 6
 
 POST
-create company by admin this will add a new user first then this company
+create company by admin this will add a new user first then this company --done
 */
 
- Route::post('createCompanyApi','CompanyController@companyApi');
+ Route::post('createCompanyApi','CompanyController@createCompany');
 
 /*
 7
 
 POST
 
-create new job request 
+create new job request --done
 */
 
  Route::post('createJobApi','JobController@storeApi');

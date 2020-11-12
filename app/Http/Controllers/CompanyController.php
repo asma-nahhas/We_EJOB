@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\Company;
+use App\User;
+
 use Log;
 use Auth;
 
@@ -82,6 +85,54 @@ class CompanyController extends Controller
 
         return redirect('manageCompanies')->with('success','Data Saved');
     }
+
+
+
+
+        public function createCompany(Request $request)
+    {
+        //
+
+         $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+            'tel'=>'required',
+            'password'=>'required'
+
+
+        ]);
+
+     $user= User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'type' => 'Company'
+
+        ]);
+
+        $id = $user->id;
+
+       
+
+
+        $company=new Company;
+        $company->id=$id;
+        $company->cName=$request->input('name');
+        $company->email=$request->input('email');
+        $company->tel=$request->input('tel');
+        $company->password=$request->input('password');
+
+    
+
+        $company->save();
+
+
+
+        return response()->json(['message'=>'Company Created successfully']);
+    }
+
+
+
 
     /**
      * Display the specified resource.
