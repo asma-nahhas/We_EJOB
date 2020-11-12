@@ -173,7 +173,7 @@ class RegisterController extends Controller
         $candidate->experienceYears=0;
         $candidate->tel=$request->input('tel');
         $candidate->password=$request->input('password');
-           $candidate->experienceYears=$request->input('experienceYears');
+        $candidate->experienceYears=$request->input('experienceYears');
 
     
 
@@ -182,11 +182,18 @@ class RegisterController extends Controller
 
         if($request->input('diplomaType')!=null){
 
+            $diploma_type_arr = explode (",", $request->input('diplomaTitle'));
+            $diploma_title_arr = explode (",", $request->input('diplomaType'));
+
+            for($x=0;$x< sizeof($diploma_title_arr);$x++){
+
             $Diploma=new Diploma;
             $Diploma->candidate_id=$id;
-            $Diploma->diplomaTitle=$request->input('diplomaTitle');
-            $Diploma->diplomaType=$request->input('diplomaType');
+            $Diploma->diplomaTitle=$diploma_title_arr[$x];
+            $Diploma->diplomaType=$diploma_type_arr[$x];
             $Diploma->save();
+
+        }
 
         }
 
