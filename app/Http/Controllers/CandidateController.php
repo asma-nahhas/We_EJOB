@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Candidate;
 use App\User;
+use App\Job;
+use App\Diploma;
 use Auth;
+use Log;
+
+
 class CandidateController extends Controller
 {
     /**
@@ -160,6 +165,55 @@ class CandidateController extends Controller
 
         return response()->json($candidate);
     }
+
+
+
+
+    /**
+        Get suitable candidates for a specific job
+    **/
+     public function suitableCandidatesApi(Request $request){
+
+                $experianceYears=0;
+                $diploma='Bachelor';
+
+                $job=Job::where('id','=',$request->input('id'))->first();
+
+                
+
+
+                 $experianceYears=  $job->requiredExperienceYears;
+                 Log::info($job);
+                 $diploma=$job->requiredEducationLevel;
+                 Log::info($diploma);
+              
+
+               
+
+                if($experianceYears==null){
+                    $experianceYears=0;
+                }
+
+                if($diploma==null){
+                    $diploma='Bachelor';
+                }
+
+                 Log::info($experianceYears);
+
+                 Log::info($diploma);
+
+                $data = Candidate::join('diploma','diploma.candidate_id','candidate.id')
+                 ->select(
+                          'candidate.id',
+                          'candidate.name',
+                          'candidate.experienceYears',
+                          'candidate.email',
+                          'diploma.diplomaType'
+                  )->where([['experienceYears','>=',$experianceYears],['diplomaType','=',$diploma]])->get();
+
+                   return response()->json($data);
+    }
+
 
     /**
      * Display the specified resource.

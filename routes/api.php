@@ -49,20 +49,20 @@ Suitable jobs by user id (we get matched jobs to user diploma and user experianc
 4
 
 GET
-get jobs ordered by experiance years (order jobs orderer descing)  and send company name 
+get jobs ordered by experiance years (order jobs orderer descing)  and send company name --done
 */
 
- Route::get('filterJobsByYearsApi','JobController@indexApi');
+ Route::get('filterJobsByYearsApi','JobController@orderByYearsApi');
 
 
 /*
 5
 
 GET
-get jobs ordered by Diploma (order by diploma desc) and send company name
+get jobs ordered by Diploma (order by diploma desc) and send company name --done
 */
 
- Route::get('filterJobsByExperianceApi','JobController@indexApi');
+ Route::get('filterJobsByExperianceApi','JobController@orderByLevelApi');
 
 /*
 6
@@ -87,7 +87,7 @@ create new job request --done
 8
 
 GET
-list of candidaates suitable for a specicfic job ( I get the job id and return all candidates suitaable for this job)
+list of candidaates suitable for a specicfic job ( I get the job id and return all candidates suitaable for this job) --done
 */
 
  Route::get('getSuitableCandidates', 'CandidateController@suitableCandidatesApi');

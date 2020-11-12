@@ -77,21 +77,12 @@ class JobController extends Controller
 
 
     /**
-    Get Filtered Jobs Api
+    Get Ordered Jobs Api  by experiance Years
     **/
 
-        public function indexApi(Request $request)
+        public function orderByYearsApi()
     {
-        //
-     
-        $filter=$request->input('filter');
-
-         Log::info($filter);
-        if($filter==null){
-
-              $filter='requiredExperienceYears';
-        }
-        Log::info($filter);
+   
 
        
 
@@ -104,11 +95,37 @@ class JobController extends Controller
                   'job.requiredEducationLevel',
                   'job.company_id',
                   'company.cName as company_name'
-          )->orderBy($filter,'desc')->get();
+          )->orderBy('requiredExperienceYears','desc')->get();
 
  
 
-        return $data;
+        return response()->json($data);
+    }
+
+
+        /**
+    Get Ordered Jobs Api  by Diploma Level
+    **/
+
+        public function orderByLevelApi()
+    {
+
+       
+
+        $data=Job::join('company','job.company_id','company.id')
+         ->select(
+                  'job.id',
+                  'job.title',
+                  'job.requiredExperienceYears',
+                  'job.salary',
+                  'job.requiredEducationLevel',
+                  'job.company_id',
+                  'company.cName as company_name'
+          )->orderBy('requiredEducationLevel','desc')->get();
+
+ 
+
+        return response()->json($data);;
     }
 
     /**
