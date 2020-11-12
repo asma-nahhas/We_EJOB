@@ -146,6 +146,12 @@ Route::get('users', function() {
 });
 
 
+ Route::get('candidates', function() {
+
+    return Candidate::all();
+});
+
+
 Route::get('users/{id}', function($id) {
     return User::find($id);
 });

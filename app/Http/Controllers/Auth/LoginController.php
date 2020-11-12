@@ -60,11 +60,13 @@ class LoginController extends Controller
                 if($user->type=='Company'){
 
                       $user = Company::whereEmail($email)->first();
+                      $type='Company';
 
 
                 }else{
 
                       $user = Candidate::whereEmail($email)->first();
+                      $type='Candidate';
 
 
                 }
@@ -79,7 +81,7 @@ class LoginController extends Controller
 
                     if($user->password==$password){
 
-                     return response()->json(['message'=>'success', 'data'=>$user]);
+                     return response()->json(['message'=>'success','type'=>$type, 'data'=>$user]);
 
                  }else{
 
