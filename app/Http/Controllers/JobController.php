@@ -281,7 +281,7 @@ class JobController extends Controller
 
        public function storeApi(Request $request)
     {
-            $this->validate($request,[
+           $validate= $this->validate($request,[
             'Title'=>'required',
             'Salary'=>'required',
             'Diploma'=>'required',
@@ -290,6 +290,8 @@ class JobController extends Controller
 
 
         ]);
+
+           if($validate->errors()==null){
 
        
 
@@ -307,6 +309,11 @@ class JobController extends Controller
 
 
         return  response()->json(['message'=>'Job Created successfully']);
+
+      }else{
+           return  response()->json(['message'=>'Data not correct']);
+
+      }
     }
 
     /**
