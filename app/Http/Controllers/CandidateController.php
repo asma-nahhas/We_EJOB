@@ -180,14 +180,15 @@ class CandidateController extends Controller
                 $job=Job::where('id','=',$request->input('id'))->first();
 
                 
-
+                if($job!=null){
 
                  $experianceYears=  $job->requiredExperienceYears;
                  Log::info($job);
+
                  $diploma=$job->requiredEducationLevel;
                  Log::info($diploma);
               
-
+             }
                
 
                 if($experianceYears==null){
@@ -211,7 +212,11 @@ class CandidateController extends Controller
                           'diploma.diplomaType'
                   )->where([['experienceYears','>=',$experianceYears],['diplomaType','=',$diploma]])->get();
 
+                 if($data!=null && sizeof($data)!=0)
+
                    return response()->json($data);
+               else
+                 return response()->json(['message'=>'No Suitable candidates found']);
     }
 
 

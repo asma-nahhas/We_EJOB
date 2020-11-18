@@ -136,7 +136,7 @@ class RegisterController extends Controller
         protected function registerApi(Request $request)
     {
 
-       
+        if (User::where('email', '=', $request->input('email'))->count() == 0) {
 
         $user= User::create([
             'name' => $request->input('name'),
@@ -147,6 +147,9 @@ class RegisterController extends Controller
         ]);
 
         $id = $user->id;
+       
+   // user found
+
 
         if($request->input('type')=='Company')
         {
@@ -201,10 +204,20 @@ class RegisterController extends Controller
 
     }
 
+
       
 
 
          return response()->json(['message'=>'success', 'data'=>$user]);
+
+     }
+     else{
+
+            return response()->json(['message'=>'This user is aleardy exists']);
+
+
+     }
+
     }
 
 
