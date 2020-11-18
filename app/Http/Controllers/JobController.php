@@ -291,10 +291,15 @@ class JobController extends Controller
 
         ]);
 
-           if($validate->errors()==null){
+           
+if($request->input('Company_id')==null || $request->input('Title')==null || $request->input('Salary')==null|| $request->input('Diploma')==null || $request->input('Years')==null ){
 
+             return  response()->json(['message'=>'Please insert all data values ']);
+
+}
+else{
        
-
+if (Company::where('id', '=', $request->input('Company_id'))->count() == 0) {
 
         $job=new Job;
         $job->company_id=$request->input('Company_id');
@@ -309,11 +314,17 @@ class JobController extends Controller
 
 
         return  response()->json(['message'=>'Job Created successfully']);
-
       }else{
-           return  response()->json(['message'=>'Data not correct']);
+
+
+           return  response()->json(['message'=>'No company has this id ']);
+
 
       }
+
+    }
+
+     
     }
 
     /**
