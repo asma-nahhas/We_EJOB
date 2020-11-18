@@ -281,15 +281,7 @@ class JobController extends Controller
 
        public function storeApi(Request $request)
     {
-           $validate= $this->validate($request,[
-            'Title'=>'required',
-            'Salary'=>'required',
-            'Diploma'=>'required',
-            'Years'=>'required',
-            'Company_id'=>'required'
-
-
-        ]);
+      
 
            
 if($request->input('Company_id')==null || $request->input('Title')==null || $request->input('Salary')==null|| $request->input('Diploma')==null || $request->input('Years')==null ){
