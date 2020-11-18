@@ -299,7 +299,7 @@ if($request->input('Company_id')==null || $request->input('Title')==null || $req
 }
 else{
        
-if (Company::where('id', '=', $request->input('Company_id'))->count() == 0) {
+if (Company::where('id', '=', $request->input('Company_id'))->count() > 0) {
 
         $job=new Job;
         $job->company_id=$request->input('Company_id');
