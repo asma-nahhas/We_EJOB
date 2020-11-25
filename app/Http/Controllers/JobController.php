@@ -213,6 +213,9 @@ class JobController extends Controller
         if($candidate!=null){
          $experianceYears=  $candidate->experienceYears;
        }
+       else{
+          return response()->json(['message'=>'No Candidate Found with this ID']);
+       }
         
          if($diplomaObj!=null){
          $diploma=$diplomaObj->diplomaType;
@@ -224,6 +227,7 @@ class JobController extends Controller
          Log::info($experianceYears);
 
          Log::info($diploma);
+         $diploma = strtolower($diploma);
 
         $data = Job::join('company','job.company_id','company.id')
          ->select(
@@ -234,7 +238,7 @@ class JobController extends Controller
                   'job.requiredEducationLevel',
                   'job.company_id',
                   'company.cName as company_name'
-          )->where([['requiredExperienceYears','<=',$experianceYears],['requiredEducationLevel','LIKE','%'.$diploma.'%']])->get();
+          )->where(['requiredExperienceYears','<=',$experianceYears])->orWhere(['lower(requiredEducationLevel)','LIKE','%'.$diploma.'%'])->get();
 
          
 
