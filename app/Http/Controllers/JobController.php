@@ -238,7 +238,7 @@ class JobController extends Controller
                   'job.requiredEducationLevel',
                   'job.company_id',
                   'company.cName as company_name'
-          )->where(['requiredExperienceYears','<=',$experianceYears])->orWhere(['lower(requiredEducationLevel)','LIKE','%'.$diploma.'%'])->get();
+          )->where([['requiredExperienceYears','<=',$experianceYears],['requiredEducationLevel','LIKE','%'.$diploma.'%']])->get();
 
          
 
