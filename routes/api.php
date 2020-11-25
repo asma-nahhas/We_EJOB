@@ -109,10 +109,7 @@ Route::get('users', function() {
  Route::get('test','JobController@test');
  
 
- Route::get('jobs', function() {
-
-    return Job::all();
-});
+ Route::get('jobs','JobController@allJobs');
 
 
 

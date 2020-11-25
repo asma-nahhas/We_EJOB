@@ -80,6 +80,34 @@ class JobController extends Controller
     Get Ordered Jobs Api  by experiance Years
     **/
 
+        public function allJobs()
+    {
+   
+
+       
+
+        $data=Job::join('company','job.company_id','company.id')
+         ->select(
+                  'job.id',
+                  'job.title',
+                  'job.requiredExperienceYears',
+                  'job.salary',
+                  'job.requiredEducationLevel',
+                  'job.company_id',
+                  'company.cName as company_name'
+          )->get();
+
+ 
+
+        return response()->json($data);
+    }
+
+
+
+    /**
+    Get Ordered Jobs Api  by experiance Years
+    **/
+
         public function orderByYearsApi()
     {
    
