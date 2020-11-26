@@ -227,7 +227,7 @@ class JobController extends Controller
          Log::info($experianceYears);
 
          Log::info($diploma);
-         $diploma = strtolower($diploma);
+         //$diploma = strtolower($diploma);
 
         $data = Job::join('company','job.company_id','company.id')
          ->select(
