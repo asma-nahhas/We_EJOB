@@ -138,7 +138,7 @@ Add Diploma
             <label for="Name">Diploma Type</label>
             <select type="text" class="form-control" name="diplomaType" aria-describedby="diplomaType" placeholder="Enter Diploma Type">
               <option value="Master" >Master</option>
-              <option value="PHD" >PHD</option>
+              <option value="PhD" >PhD</option>
               <option value="Diploma" >Diploma</option>
               <option value="Bachelor" >Bachelor</option>
 
@@ -191,7 +191,7 @@ Add Diploma
             <label for="exampleInputPassword1">Diploma Type</label>
             <select  class="form-control" name="editDiplomaType" id="editDiplomaType" placeholder="Enter Diploma Type">
               <option value="Master" >Master</option>
-              <option value="PHD" >PHD</option>
+              <option value="PhD" >PhD</option>
               <option value="Diploma" >Diploma</option>
               <option value="Bachelor" >Bachelor</option>
             </select>
