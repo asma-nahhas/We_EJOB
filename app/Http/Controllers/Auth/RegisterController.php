@@ -185,8 +185,8 @@ class RegisterController extends Controller
 
         if($request->input('diplomaType')!=null){
 
-            $diploma_type_arr = explode (",", $request->input('diplomaTitle'));
-            $diploma_title_arr = explode (",", $request->input('diplomaType'));
+            $diploma_type_arr = explode (",", $request->input('diplomaType'));
+            $diploma_title_arr = explode (",", $request->input('diplomaTitle'));
 
             for($x=0;$x< sizeof($diploma_title_arr);$x++){
 
