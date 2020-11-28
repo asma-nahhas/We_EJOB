@@ -218,8 +218,13 @@ class JobController extends Controller
        }
         
          if($diplomaObj!=null){
+          Log::info("The diploma is");
+        
          $diploma=$diplomaObj->diplomaType;
+           Log::info($diploma);
          }
+
+        
       
       
 
@@ -227,7 +232,13 @@ class JobController extends Controller
          Log::info($experianceYears);
 
          Log::info($diploma);
-         //$diploma = strtolower($diploma);
+
+         $job_rank=0;
+
+         if( $diploma == "PhD" )
+         {
+
+                Log::info("first query");
 
         $data = Job::join('company','job.company_id','company.id')
          ->select(
@@ -238,9 +249,69 @@ class JobController extends Controller
                   'job.requiredEducationLevel',
                   'job.company_id',
                   'company.cName as company_name'
-          )->where([['requiredExperienceYears','<=',$experianceYears],['requiredEducationLevel','LIKE','%'.$diploma.'%']])->get();
+          )->where('requiredExperienceYears','<=',$experianceYears)->get();
 
-         
+       }
+       #,['requiredEducationLevel','LIKE','%'.$diploma.'%']
+
+       else{
+
+       if($diploma == "Master" )
+       {
+        Log::info("second query");
+
+                 $data = Job::join('company','job.company_id','company.id')
+         ->select(
+                  'job.id',
+                  'job.title',
+                  'job.requiredExperienceYears',
+                  'job.salary',
+                  'job.requiredEducationLevel',
+                  'job.company_id',
+                  'company.cName as company_name'
+          )->where('requiredExperienceYears','<=',$experianceYears )->whereIn('requiredEducationLevel',['Master','Bachelor','Diploma','master','bachelor'])->get();
+
+       }
+
+       else{
+
+        
+        if($diploma == "Diploma" ){
+
+          Log::info("third query");
+
+                  $data = Job::join('company','job.company_id','company.id')
+         ->select(
+                  'job.id',
+                  'job.title',
+                  'job.requiredExperienceYears',
+                  'job.salary',
+                  'job.requiredEducationLevel',
+                  'job.company_id',
+                  'company.cName as company_name'
+          )->where('requiredExperienceYears','<=',$experianceYears)->whereIn('requiredEducationLevel',['Bachelor','Diploma','bachelor'])->get();
+
+
+        }
+        else{
+
+            Log::info("fourth query");
+
+                  $data = Job::join('company','job.company_id','company.id')
+         ->select(
+                  'job.id',
+                  'job.title',
+                  'job.requiredExperienceYears',
+                  'job.salary',
+                  'job.requiredEducationLevel',
+                  'job.company_id',
+                  'company.cName as company_name'
+          )->where('requiredExperienceYears','<=',$experianceYears)->whereIn('requiredEducationLevel',['Bachelor','bachelor'])->get();
+
+        }
+      }
+
+      }
 
           if($data==null || sizeof($data)==0)
             return response()->json(['message'=>'No Data Found ']);
